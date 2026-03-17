@@ -1,6 +1,6 @@
 name: allah_name
 description: "Allah's 99 Names - Islamic Learning App"
-publish_to: 'none'
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
@@ -11,19 +11,19 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  
+
   # Google Fonts for Arabic typography
   google_fonts: ^6.1.0
-  
+
   # Audio playback
   audioplayers: ^6.0.0
-  
+
   # Text-to-Speech
   flutter_tts: ^4.0.2
-  
+
   # Local storage
   shared_preferences: ^2.2.2
-  
+
   # State management
   provider: ^6.1.1
   vibration: ^3.1.4
@@ -37,12 +37,21 @@ dev_dependencies:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icon/app_icon.png"
+  image_path: "assets/icon/image.png"
   min_sdk_android: 21
+  remove_alpha_ios: false
+  adaptive_icon_background: "#000000"
+  adaptive_icon_foreground: "assets/icon/ic_foreground.png"
+  web:
+    generate: true
+    image_path: "assets/icon/image.png"
+  windows:
+    generate: true
+    image_path: "assets/icon/image.png"
 
 flutter:
   uses-material-design: true
-  
+
   assets:
     - assets/data/names.json
     - assets/audio/

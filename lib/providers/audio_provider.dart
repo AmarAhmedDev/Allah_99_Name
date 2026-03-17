@@ -5,7 +5,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 import '../models/allah_name.dart';
 
 class AudioProvider with ChangeNotifier {
-  final AudioPlayer _audioPlayer = AudioPlayer();
+  AudioPlayer _audioPlayer = AudioPlayer();
   final FlutterTts _flutterTts = FlutterTts();
   Timer? _nextTrackTimer;
 
@@ -29,13 +29,23 @@ class AudioProvider with ChangeNotifier {
   }
 
   void _initializeAudioPlayer() {
-    // Configure once at startup for fastest subsequent playback
+    // Use mediaPlayer mode for full audio playback (not lowLatency which is for short sounds)
     _audioPlayer.setReleaseMode(ReleaseMode.stop);
-    _audioPlayer.setPlayerMode(PlayerMode.lowLatency);
+    _audioPlayer.setPlayerMode(PlayerMode.mediaPlayer);
     _audioPlayer.setVolume(1.0);
 
     _audioPlayer.onPlayerComplete.listen((_) {
       _onAudioComplete();
+    });
+
+    // Track actual player state to keep isPlaying in sync
+    _audioPlayer.onPlayerStateChanged.listen((PlayerState state) {
+      if (state == PlayerState.completed || state == PlayerState.stopped) {
+        if (!_useTtsFallback) {
+          _isPlaying = false;
+          notifyListeners();
+        }
+      }
     });
   }
 
@@ -110,22 +120,47 @@ class AudioProvider with ChangeNotifier {
     }
   }
 
-  /// Play audio as fast as possible - minimal overhead
+  /// Play audio with full volume - recreate player if needed for reliability
   Future<bool> _tryPlayAudio(String url) async {
     try {
+      // Ensure volume is at maximum before every play (fixes volume drop after id 84)
+      await _audioPlayer.setVolume(1.0);
+      await _audioPlayer.setPlayerMode(PlayerMode.mediaPlayer);
+
       if (url.startsWith('assets/')) {
         final assetPath = url.replaceFirst('assets/', '');
-        // Play directly - player is already configured at init
         await _audioPlayer.play(AssetSource(assetPath));
       } else {
         await _audioPlayer.play(UrlSource(url));
       }
 
+      // Re-confirm volume after play starts (some devices reset volume on new source)
+      await _audioPlayer.setVolume(1.0);
+
       _isPlaying = true;
       return true;
     } catch (e) {
       debugPrint('❌ Failed to play: $url - $e');
-      return false;
+      // If playback fails, try recreating the player
+      try {
+        await _audioPlayer.dispose();
+        _audioPlayer = AudioPlayer();
+        _initializeAudioPlayer();
+
+        await _audioPlayer.setVolume(1.0);
+        if (url.startsWith('assets/')) {
+          final assetPath = url.replaceFirst('assets/', '');
+          await _audioPlayer.play(AssetSource(assetPath));
+        } else {
+          await _audioPlayer.play(UrlSource(url));
+        }
+        await _audioPlayer.setVolume(1.0);
+        _isPlaying = true;
+        return true;
+      } catch (e2) {
+        debugPrint('❌ Retry also failed: $url - $e2');
+        return false;
+      }
     }
   }
 
@@ -189,8 +224,8 @@ class AudioProvider with ChangeNotifier {
 
     if (_autoPlay && _currentIndex < _playlist.length - 1) {
       _nextTrackTimer?.cancel();
-      // Reduced delay for smoother continuous playback
-      _nextTrackTimer = Timer(const Duration(milliseconds: 200), () {
+      // Small delay before next track for smooth continuous playback
+      _nextTrackTimer = Timer(const Duration(milliseconds: 500), () {
         if (_autoPlay) {
           playByIndex(_currentIndex + 1);
         }
