@@ -16,6 +16,7 @@ class AudioPlayerScreen extends StatefulWidget {
 class _AudioPlayerScreenState extends State<AudioPlayerScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
+  late AudioProvider _audioProvider;
 
   @override
   void initState() {
@@ -24,6 +25,8 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
       vsync: this,
       duration: const Duration(seconds: 2),
     )..repeat();
+
+    _audioProvider = context.read<AudioProvider>();
 
     // Set the playlist and start playing from the very first name
     final namesProvider = context.read<NamesProvider>();
@@ -40,8 +43,9 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
   @override
   void dispose() {
     _animationController.dispose();
-    // Stop audio when leaving this screen
-    context.read<AudioProvider>().stop();
+    // Stop audio safely when leaving this screen (prevents unmounted context crash)
+    _audioProvider.pause();
+    _audioProvider.setAutoPlay(false);
     super.dispose();
   }
 
@@ -60,7 +64,14 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
     final progress =
         (audioProvider.currentIndex + 1) / audioProvider.totalCount;
 
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: () async {
+        // Instantly pause BEFORE the exit animation even starts
+        _audioProvider.pause();
+        _audioProvider.setAutoPlay(false);
+        return true;
+      },
+      child: Scaffold(
       appBar: AppBar(
         title: const Text('Playing All Names'),
         actions: [
@@ -302,6 +313,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
               ],
             ),
           ),
+        ),
         ),
       ),
     );
