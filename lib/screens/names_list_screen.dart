@@ -344,6 +344,8 @@ class _NameCard extends StatelessWidget {
 
                             final index = namesProvider.getIndexById(name.id);
                             if (index != -1) {
+                              provider.setAutoPlay(false); // Only play this track
+
                               if (provider.currentName?.id == name.id) {
                                 if (provider.isPlaying) {
                                   await provider.pause();

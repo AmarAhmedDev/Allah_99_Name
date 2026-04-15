@@ -149,6 +149,8 @@ class _NameDetailScreenState extends State<NameDetailScreen> {
                     onTap: () async {
                       final index = namesProvider.getIndexById(widget.name.id);
                       if (index != -1) {
+                        audioProvider.setAutoPlay(false); // Only play this track
+
                         if (audioProvider.currentName?.id == widget.name.id) {
                           if (isPlaying) {
                             await audioProvider.pause();

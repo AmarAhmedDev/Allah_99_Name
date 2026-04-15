@@ -13,7 +13,7 @@ class AudioProvider with ChangeNotifier {
   int _currentIndex = 0;
   bool _isPlaying = false;
   bool _isLoading = false;
-  final bool _autoPlay = true;
+  bool _autoPlay = false;
   bool _useTtsFallback = false;
   bool _isAmharicAudio = false;
 
@@ -24,6 +24,11 @@ class AudioProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
   int get totalCount => _playlist.length;
   bool get isAmharicAudio => _isAmharicAudio;
+  bool get isAutoPlay => _autoPlay;
+
+  void setAutoPlay(bool value) {
+    _autoPlay = value;
+  }
 
   void updateLanguage(bool isAmharic) {
     if (_isAmharicAudio != isAmharic) {
@@ -193,6 +198,7 @@ class AudioProvider with ChangeNotifier {
   /// Play all names from the very beginning (index 0)
   Future<void> playFromStart() async {
     if (_playlist.isEmpty) return;
+    _autoPlay = true; // Auto-play is only enabled for "Play All" mode
     await playByIndex(0);
   }
 
