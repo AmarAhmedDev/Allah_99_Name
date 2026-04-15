@@ -186,7 +186,9 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                     const SizedBox(height: AppSizes.paddingMD),
 
                     Text(
-                      currentName.meaningEn,
+                      context.watch<LanguageProvider>().isAmharicAudio && currentName.meaningAm.isNotEmpty
+                          ? currentName.meaningAm
+                          : currentName.meaningEn,
                       style: Theme.of(context).textTheme.headlineSmall
                           ?.copyWith(color: AppColors.gold),
                       textAlign: TextAlign.center,

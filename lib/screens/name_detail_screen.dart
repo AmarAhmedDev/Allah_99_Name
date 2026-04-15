@@ -102,29 +102,17 @@ class _NameDetailScreenState extends State<NameDetailScreen> {
               ),
               const SizedBox(height: AppSizes.paddingMD),
 
-              // English Meaning
+              // Meaning
               Text(
-                widget.name.meaningEn,
+                context.watch<LanguageProvider>().isAmharicAudio && widget.name.meaningAm.isNotEmpty
+                    ? widget.name.meaningAm
+                    : widget.name.meaningEn,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   color: AppColors.gold,
                   fontWeight: FontWeight.w500,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: AppSizes.paddingSM),
-
-              // Amharic Meaning
-              if (widget.name.meaningAm.isNotEmpty)
-                Text(
-                  widget.name.meaningAm,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? AppColors.textSecondaryDark
-                        : AppColors.textSecondaryLight,
-                    fontStyle: FontStyle.italic,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
 
               const SizedBox(height: AppSizes.padding2XL),
 

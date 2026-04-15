@@ -303,7 +303,9 @@ class _NameCard extends StatelessWidget {
 
                   // Meaning
                   Text(
-                    name.meaningEn,
+                    context.watch<LanguageProvider>().isAmharicAudio && name.meaningAm.isNotEmpty
+                        ? name.meaningAm
+                        : name.meaningEn,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: AppColors.gold,
                       fontWeight: FontWeight.w500,
