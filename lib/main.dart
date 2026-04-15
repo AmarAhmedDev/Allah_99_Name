@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'providers/names_provider.dart';
 import 'providers/theme_provider.dart';
 import 'providers/audio_provider.dart';
 import 'utils/app_theme.dart';
-import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Pre-cache for faster startup - don't block on it
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
   runApp(const MyApp());
 }
 
@@ -19,8 +26,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider(), lazy: false),
-        ChangeNotifierProvider(create: (_) => NamesProvider(), lazy: false),
-        ChangeNotifierProvider(create: (_) => AudioProvider(), lazy: false),
+        ChangeNotifierProvider(create: (_) => NamesProvider()),
+        ChangeNotifierProvider(create: (_) => AudioProvider()),
       ],
       child: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) {
@@ -30,7 +37,7 @@ class MyApp extends StatelessWidget {
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: themeProvider.themeMode,
-            home: const HomeScreen(),
+            home: const SplashScreen(),
           );
         },
       ),
