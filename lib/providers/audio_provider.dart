@@ -48,8 +48,9 @@ class AudioProvider with ChangeNotifier {
     });
 
     // Track actual player state to keep isPlaying in sync
+    // We only listen for completed. Stop/Pause natively sync via method calls.
     _audioPlayer.onPlayerStateChanged.listen((PlayerState state) {
-      if (state == PlayerState.completed || state == PlayerState.stopped) {
+      if (state == PlayerState.completed) {
         if (!_useTtsFallback) {
           _isPlaying = false;
           notifyListeners();
@@ -83,7 +84,8 @@ class AudioProvider with ChangeNotifier {
     if (index < 0 || index >= _playlist.length) return;
 
     _currentIndex = index;
-    _isLoading = true;
+    _isPlaying = true; // Instantly show pause button for a snappy UI
+    _isLoading = false; // Disable spinner to remove delay feeling
     _useTtsFallback = false;
     notifyListeners();
 
@@ -124,7 +126,6 @@ class AudioProvider with ChangeNotifier {
       await _flutterTts.speak(name.arabic);
       _isPlaying = true;
     } finally {
-      _isLoading = false;
       notifyListeners();
     }
   }
