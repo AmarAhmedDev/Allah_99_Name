@@ -233,6 +233,19 @@ class _NameCard extends StatelessWidget {
               ),
             ),
 
+            // Playing indicator (Moved here so it's behind the play button)
+            if (isPlaying)
+              Positioned.fill(
+                child: IgnorePointer(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.gold, width: 2),
+                      borderRadius: BorderRadius.circular(AppSizes.radiusLG),
+                    ),
+                  ),
+                ),
+              ),
+
             Padding(
               padding: const EdgeInsets.all(AppSizes.paddingMD),
               child: Column(
@@ -305,37 +318,44 @@ class _NameCard extends StatelessWidget {
                   // Play Button
                   Align(
                     alignment: Alignment.bottomRight,
-                    child: Material(
-                      color: AppColors.gold,
-                      shape: const CircleBorder(),
-                      child: InkWell(
-                        onTap: () async {
-                          final provider = context.read<AudioProvider>();
-                          final namesProvider = context.read<NamesProvider>();
+                    child: GestureDetector(
+                      // Catch any stray taps in the padded area to prevent Bubble
+                      onTap: () {}, 
+                      behavior: HitTestBehavior.opaque,
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: IconButton(
+                          iconSize: 24,
+                          style: IconButton.styleFrom(
+                            backgroundColor: AppColors.gold,
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.all(12),
+                            minimumSize: const Size(48, 48),
+                          ),
+                          onPressed: () async {
+                            final provider = context.read<AudioProvider>();
+                            final namesProvider = context.read<NamesProvider>();
 
-                          // Ensure playlist is set if empty but names are available
-                          if (provider.totalCount == 0 &&
-                              namesProvider.allNames.isNotEmpty) {
-                            provider.setPlaylist(namesProvider.allNames);
-                          }
-
-                          final index = namesProvider.getIndexById(name.id);
-                          if (index != -1) {
-                            if (provider.currentName?.id == name.id &&
-                                provider.isPlaying) {
-                              await provider.pause();
-                            } else {
-                              await provider.playByIndex(index);
+                            // Ensure playlist is set if empty but names are available
+                            if (provider.totalCount == 0 &&
+                                namesProvider.allNames.isNotEmpty) {
+                              provider.setPlaylist(namesProvider.allNames);
                             }
-                          }
-                        },
-                        customBorder: const CircleBorder(),
-                        child: Container(
-                          width: 36,
-                          height: 36,
-                          alignment: Alignment.center,
-                          child:
-                              audioProvider.isLoading &&
+
+                            final index = namesProvider.getIndexById(name.id);
+                            if (index != -1) {
+                              if (provider.currentName?.id == name.id) {
+                                if (provider.isPlaying) {
+                                  await provider.pause();
+                                } else {
+                                  await provider.resume();
+                                }
+                              } else {
+                                await provider.playByIndex(index);
+                              }
+                            }
+                          },
+                          icon: audioProvider.isLoading &&
                                   audioProvider.currentName?.id == name.id
                               ? const SizedBox(
                                   width: 20,
@@ -349,8 +369,6 @@ class _NameCard extends StatelessWidget {
                                 )
                               : Icon(
                                   isPlaying ? Icons.pause : Icons.play_arrow,
-                                  color: Colors.white,
-                                  size: 20,
                                 ),
                         ),
                       ),
@@ -360,16 +378,6 @@ class _NameCard extends StatelessWidget {
               ),
             ),
 
-            // Playing indicator
-            if (isPlaying)
-              Positioned.fill(
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.gold, width: 2),
-                    borderRadius: BorderRadius.circular(AppSizes.radiusLG),
-                  ),
-                ),
-              ),
           ],
         ),
       ),

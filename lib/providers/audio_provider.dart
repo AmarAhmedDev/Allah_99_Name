@@ -213,6 +213,13 @@ class AudioProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> resume() async {
+    _nextTrackTimer?.cancel();
+    await _audioPlayer.resume();
+    _isPlaying = true;
+    notifyListeners();
+  }
+
   Future<void> next() async {
     if (_currentIndex < _playlist.length - 1) {
       await playByIndex(_currentIndex + 1);
@@ -233,7 +240,11 @@ class AudioProvider with ChangeNotifier {
     if (_isPlaying) {
       await pause();
     } else {
-      await play();
+      if (_audioPlayer.state == PlayerState.paused) {
+        await resume();
+      } else {
+        await play();
+      }
     }
   }
 
