@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Customize your launch splash screen -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Background image - Islamic geometric pattern -->
     <item>
-        <bitmap
-            android:gravity="fill"
-            android:src="@drawable/splash_background" />
-    </item>
-
-    <!-- App icon centered -->
-    <item>
-        <bitmap
-            android:gravity="center"
-            android:src="@drawable/splash_icon" />
+        <color android:color="@android:color/black"/>
     </item>
 </layer-list>

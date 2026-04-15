@@ -13,8 +13,6 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
-  late Animation<double> _fadeAnimation;
-  late Animation<double> _glowAnimation;
 
   @override
   void initState() {
@@ -31,39 +29,25 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
 
+    // Fast animation! Total 1.2 seconds before entering the app
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1800),
+      duration: const Duration(milliseconds: 1500),
     );
 
-    // Icon scales from 0.6 -> 1.0 with a nice bounce
-    _scaleAnimation = Tween<double>(begin: 0.6, end: 1.0).animate(
+    // "Movable background" effect: Slow, professional zooming (Ken Burns effect)
+    // Starting slightly smaller to give a nice visual push, or 1.0 -> 1.15
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.12).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.0, 0.6, curve: Curves.elasticOut),
-      ),
-    );
-
-    // Fade in from 0 -> 1
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.0, 0.4, curve: Curves.easeIn),
-      ),
-    );
-
-    // Glow pulse effect
-    _glowAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.3, 1.0, curve: Curves.easeInOut),
+        curve: Curves.easeOutSine,
       ),
     );
 
     _controller.forward();
 
-    // Navigate to home quickly after animation
-    Future.delayed(const Duration(milliseconds: 2200), () {
+    // Navigate immediately after the fast animation
+    Future.delayed(const Duration(milliseconds: 1500), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(
           PageRouteBuilder(
@@ -71,12 +55,9 @@ class _SplashScreenState extends State<SplashScreen>
                 const HomeScreen(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
-              return FadeTransition(
-                opacity: animation,
-                child: child,
-              );
+              return FadeTransition(opacity: animation, child: child);
             },
-            transitionDuration: const Duration(milliseconds: 500),
+            transitionDuration: const Duration(milliseconds: 600),
           ),
         );
       }
@@ -86,7 +67,6 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void dispose() {
     _controller.dispose();
-    // Restore system UI
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
     super.dispose();
@@ -95,75 +75,24 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          // Beautiful Islamic pattern background
-          Image.asset(
-            'assets/icon/splash_background.png',
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
-          ),
-
-          // Gradient overlay for depth
-          Container(
-            decoration: BoxDecoration(
-              gradient: RadialGradient(
-                center: Alignment.center,
-                radius: 0.9,
-                colors: [
-                  Colors.transparent,
-                  Colors.black.withValues(alpha: 0.3),
-                ],
+      backgroundColor: Colors.black, // Match the dark starry background edges
+      body: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return Center(
+            child: Transform.scale(
+              scale: _scaleAnimation.value,
+              child: SizedBox(
+                width: double.infinity,
+                height: double.infinity,
+                child: Image.asset(
+                  'assets/icon/splash_background.png',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-
-          // Centered icon with animations
-          Center(
-            child: AnimatedBuilder(
-              animation: _controller,
-              builder: (context, child) {
-                return Transform.scale(
-                  scale: _scaleAnimation.value,
-                  child: Opacity(
-                    opacity: _fadeAnimation.value,
-                    child: Container(
-                      width: 200,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          // Golden glow effect
-                          BoxShadow(
-                            color: const Color(0xFFD4AF37)
-                                .withValues(alpha: 0.4 * _glowAnimation.value),
-                            blurRadius: 40 * _glowAnimation.value,
-                            spreadRadius: 10 * _glowAnimation.value,
-                          ),
-                          // Outer ambient shadow
-                          BoxShadow(
-                            color: Colors.black
-                                .withValues(alpha: 0.3 * _glowAnimation.value),
-                            blurRadius: 60 * _glowAnimation.value,
-                            spreadRadius: 5,
-                          ),
-                        ],
-                      ),
-                      child: ClipOval(
-                        child: Image.asset(
-                          'assets/icon/app_icon.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
