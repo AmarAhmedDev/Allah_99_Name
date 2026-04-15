@@ -5,6 +5,7 @@ import '../constants/app_constants.dart';
 import '../models/allah_name.dart';
 import '../providers/names_provider.dart';
 import '../providers/audio_provider.dart';
+import '../providers/language_provider.dart';
 
 class NameDetailScreen extends StatefulWidget {
   final AllahName name;
@@ -34,7 +35,45 @@ class _NameDetailScreenState extends State<NameDetailScreen> {
         audioProvider.isPlaying;
 
     return Scaffold(
-      appBar: AppBar(title: Text(widget.name.transliteration)),
+      appBar: AppBar(
+        title: Text(widget.name.transliteration),
+        actions: [
+          PopupMenuButton<bool>(
+            icon: const Icon(Icons.language),
+            tooltip: 'Select Audio Language',
+            initialValue: context.watch<LanguageProvider>().isAmharicAudio,
+            onSelected: (bool isAmharic) {
+              context.read<LanguageProvider>().toggleLanguage(isAmharic);
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<bool>>[
+              PopupMenuItem<bool>(
+                value: false,
+                child: Row(
+                  children: [
+                    const Text('English'),
+                    if (!context.read<LanguageProvider>().isAmharicAudio)
+                      const Spacer(),
+                    if (!context.read<LanguageProvider>().isAmharicAudio)
+                      const Icon(Icons.check, size: 20),
+                  ],
+                ),
+              ),
+              PopupMenuItem<bool>(
+                value: true,
+                child: Row(
+                  children: [
+                    const Text('አማርኛ'),
+                    if (context.read<LanguageProvider>().isAmharicAudio)
+                      const Spacer(),
+                    if (context.read<LanguageProvider>().isAmharicAudio)
+                      const Icon(Icons.check, size: 20),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AppSizes.paddingXL),

@@ -55,6 +55,8 @@ flutter:
   assets:
     - assets/data/names.json
     - assets/audio/
+    - assets/audio/Amharic/
+    - assets/audio/English/
     - assets/icon/app_icon.png
     - assets/icon/splash_background.png
     # All audio files (001.mp3 to 099.mp3) will be included from assets/audio/

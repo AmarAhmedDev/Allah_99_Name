@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../constants/app_constants.dart';
 import '../providers/names_provider.dart';
 import '../providers/audio_provider.dart';
+import '../providers/language_provider.dart';
 import '../models/allah_name.dart';
 import 'name_detail_screen.dart';
 import 'audio_player_screen.dart';
@@ -62,7 +63,45 @@ class _NamesListScreenState extends State<NamesListScreen> {
     final namesProvider = context.watch<NamesProvider>();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('99 Names of Allah')),
+      appBar: AppBar(
+        title: const Text('99 Names of Allah'),
+        actions: [
+          PopupMenuButton<bool>(
+            icon: const Icon(Icons.language),
+            tooltip: 'Select Audio Language',
+            initialValue: context.watch<LanguageProvider>().isAmharicAudio,
+            onSelected: (bool isAmharic) {
+              context.read<LanguageProvider>().toggleLanguage(isAmharic);
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<bool>>[
+              PopupMenuItem<bool>(
+                value: false,
+                child: Row(
+                  children: [
+                    const Text('English'),
+                    if (!context.read<LanguageProvider>().isAmharicAudio)
+                      const Spacer(),
+                    if (!context.read<LanguageProvider>().isAmharicAudio)
+                      const Icon(Icons.check, size: 20),
+                  ],
+                ),
+              ),
+              PopupMenuItem<bool>(
+                value: true,
+                child: Row(
+                  children: [
+                    const Text('አማርኛ'),
+                    if (context.read<LanguageProvider>().isAmharicAudio)
+                      const Spacer(),
+                    if (context.read<LanguageProvider>().isAmharicAudio)
+                      const Icon(Icons.check, size: 20),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
       body: namesProvider.isLoading
           ? const Center(child: CircularProgressIndicator())
           : Column(

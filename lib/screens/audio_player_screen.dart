@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../constants/app_constants.dart';
 import '../providers/names_provider.dart';
 import '../providers/audio_provider.dart';
+import '../providers/language_provider.dart';
 
 class AudioPlayerScreen extends StatefulWidget {
   const AudioPlayerScreen({super.key});
@@ -60,7 +61,47 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
         (audioProvider.currentIndex + 1) / audioProvider.totalCount;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Playing All Names')),
+      appBar: AppBar(
+        title: const Text('Playing All Names'),
+        actions: [
+          PopupMenuButton<bool>(
+            icon: const Icon(Icons.language),
+            tooltip: 'Select Audio Language',
+            initialValue: context.watch<LanguageProvider>().isAmharicAudio,
+            onSelected: (bool isAmharic) {
+              context.read<LanguageProvider>().toggleLanguage(isAmharic);
+              // Restart audio to reflect language change if currently playing?
+              // The user might prefer if it continues but maybe in the newly selected language
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<bool>>[
+              PopupMenuItem<bool>(
+                value: false,
+                child: Row(
+                  children: [
+                    const Text('English'),
+                    if (!context.read<LanguageProvider>().isAmharicAudio)
+                      const Spacer(),
+                    if (!context.read<LanguageProvider>().isAmharicAudio)
+                      const Icon(Icons.check, size: 20),
+                  ],
+                ),
+              ),
+              PopupMenuItem<bool>(
+                value: true,
+                child: Row(
+                  children: [
+                    const Text('አማርኛ'),
+                    if (context.read<LanguageProvider>().isAmharicAudio)
+                      const Spacer(),
+                    if (context.read<LanguageProvider>().isAmharicAudio)
+                      const Icon(Icons.check, size: 20),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(

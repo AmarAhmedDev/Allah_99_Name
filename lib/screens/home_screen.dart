@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../constants/app_constants.dart';
 import '../providers/theme_provider.dart';
+import '../providers/language_provider.dart';
 import 'names_list_screen.dart';
 import 'audio_player_screen.dart';
 import 'practice_screen.dart';
@@ -29,6 +30,40 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               context.read<ThemeProvider>().toggleTheme();
             },
+          ),
+          PopupMenuButton<bool>(
+            icon: const Icon(Icons.language),
+            tooltip: 'Select Audio Language',
+            initialValue: context.watch<LanguageProvider>().isAmharicAudio,
+            onSelected: (bool isAmharic) {
+              context.read<LanguageProvider>().toggleLanguage(isAmharic);
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<bool>>[
+              PopupMenuItem<bool>(
+                value: false,
+                child: Row(
+                  children: [
+                    const Text('English'),
+                    if (!context.read<LanguageProvider>().isAmharicAudio)
+                      const Spacer(),
+                    if (!context.read<LanguageProvider>().isAmharicAudio)
+                      const Icon(Icons.check, size: 20),
+                  ],
+                ),
+              ),
+              PopupMenuItem<bool>(
+                value: true,
+                child: Row(
+                  children: [
+                    const Text('አማርኛ'),
+                    if (context.read<LanguageProvider>().isAmharicAudio)
+                      const Spacer(),
+                    if (context.read<LanguageProvider>().isAmharicAudio)
+                      const Icon(Icons.check, size: 20),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),

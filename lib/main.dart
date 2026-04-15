@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'providers/names_provider.dart';
 import 'providers/theme_provider.dart';
 import 'providers/audio_provider.dart';
+import 'providers/language_provider.dart';
 import 'utils/app_theme.dart';
 import 'screens/splash_screen.dart';
 
@@ -27,7 +28,12 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider(), lazy: false),
         ChangeNotifierProvider(create: (_) => NamesProvider()),
-        ChangeNotifierProvider(create: (_) => AudioProvider()),
+        ChangeNotifierProvider(create: (_) => LanguageProvider()),
+        ChangeNotifierProxyProvider<LanguageProvider, AudioProvider>(
+          create: (_) => AudioProvider(),
+          update: (_, languageProvider, audioProvider) =>
+              audioProvider!..updateLanguage(languageProvider.isAmharicAudio),
+        ),
       ],
       child: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) {

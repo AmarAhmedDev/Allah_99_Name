@@ -15,6 +15,7 @@ class AudioProvider with ChangeNotifier {
   bool _isLoading = false;
   final bool _autoPlay = true;
   bool _useTtsFallback = false;
+  bool _isAmharicAudio = false;
 
   AllahName? get currentName =>
       _currentIndex < _playlist.length ? _playlist[_currentIndex] : null;
@@ -22,6 +23,14 @@ class AudioProvider with ChangeNotifier {
   bool get isPlaying => _isPlaying;
   bool get isLoading => _isLoading;
   int get totalCount => _playlist.length;
+  bool get isAmharicAudio => _isAmharicAudio;
+
+  void updateLanguage(bool isAmharic) {
+    if (_isAmharicAudio != isAmharic) {
+      _isAmharicAudio = isAmharic;
+      notifyListeners();
+    }
+  }
 
   AudioProvider() {
     _initializeTts();
@@ -127,6 +136,11 @@ class AudioProvider with ChangeNotifier {
       await _audioPlayer.setVolume(1.0);
       await _audioPlayer.setPlayerMode(PlayerMode.mediaPlayer);
 
+      if (url.startsWith('assets/audio/')) {
+        String langFolder = _isAmharicAudio ? 'Amharic' : 'English';
+        url = url.replaceFirst('assets/audio/', 'assets/audio/$langFolder/');
+      }
+
       if (url.startsWith('assets/')) {
         final assetPath = url.replaceFirst('assets/', '');
         await _audioPlayer.play(AssetSource(assetPath));
@@ -148,6 +162,12 @@ class AudioProvider with ChangeNotifier {
         _initializeAudioPlayer();
 
         await _audioPlayer.setVolume(1.0);
+        
+        if (url.startsWith('assets/audio/')) {
+          String langFolder = _isAmharicAudio ? 'Amharic' : 'English';
+          url = url.replaceFirst('assets/audio/', 'assets/audio/$langFolder/');
+        }
+
         if (url.startsWith('assets/')) {
           final assetPath = url.replaceFirst('assets/', '');
           await _audioPlayer.play(AssetSource(assetPath));
