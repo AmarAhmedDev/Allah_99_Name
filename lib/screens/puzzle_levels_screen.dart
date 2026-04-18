@@ -41,8 +41,8 @@ class _PuzzleLevelsScreenState extends State<PuzzleLevelsScreen> {
     final namesProvider = context.watch<NamesProvider>();
     final allNames = namesProvider.allNames;
     
-    // Group into levels of 11 names each (9 levels total: 9 * 11 = 99)
-    final int itemsPerLevel = 11;
+    // Group into levels of 9 names each (11 levels total: 11 * 9 = 99)
+    final int itemsPerLevel = 9;
     final int totalLevels = (allNames.length / itemsPerLevel).ceil();
 
     return Scaffold(

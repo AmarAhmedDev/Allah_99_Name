@@ -185,6 +185,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                   ),
                 )
               : GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: AppSizes.paddingSM,
