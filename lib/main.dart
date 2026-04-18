@@ -16,8 +16,11 @@ void main() {
     DeviceOrientation.portraitUp,
   ]);
 
-  // Enable edge-to-edge mode globally for transparent system bars
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  // Hide the navigation bar (back, home, recent) but keep the top status bar
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.manual, 
+    overlays: [SystemUiOverlay.top],
+  );
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,

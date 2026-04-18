@@ -8,6 +8,7 @@ import 'names_list_screen.dart';
 import 'audio_player_screen.dart';
 import 'practice_screen.dart';
 import 'tasbih_screen.dart';
+import 'puzzle_levels_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -165,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                     Expanded(
                       child: _FeatureCard(
                         icon: '📚',
-                        title: 'Questions',
+                        title: 'Test',
                         onTap: () {
                           Navigator.push(
                             context,
@@ -186,6 +187,21 @@ class HomeScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (_) => const TasbihScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: AppSizes.paddingMD),
+                    Expanded(
+                      child: _FeatureCard(
+                        icon: '🧩',
+                        title: 'Puzzle',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const PuzzleLevelsScreen(),
                             ),
                           );
                         },
@@ -269,6 +285,9 @@ class _FeatureCard extends StatelessWidget {
             const SizedBox(height: AppSizes.paddingSM),
             Text(
               title,
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.gold,
                 fontWeight: FontWeight.w600,

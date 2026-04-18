@@ -108,28 +108,51 @@ class _NamesListScreenState extends State<NamesListScreen> {
               children: [
                 // Search Bar
                 Padding(
-                  padding: const EdgeInsets.all(AppSizes.paddingMD),
-                  child: TextField(
-                    controller: _searchController,
-                    decoration: InputDecoration(
-                      hintText: 'Search names...',
-                      prefixIcon: const Icon(Icons.search),
-                      suffixIcon: _searchController.text.isNotEmpty
-                          ? IconButton(
-                              icon: const Icon(Icons.clear, size: 20),
-                              onPressed: _clearSearch,
-                            )
-                          : null,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(AppSizes.radiusLG),
-                        borderSide: BorderSide(
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? AppColors.borderDark
-                              : AppColors.borderLight,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSizes.paddingLG,
+                    vertical: AppSizes.paddingMD,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.gold.withValues(alpha: 0.1),
+                          blurRadius: 12,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                      border: Border.all(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.borderDark
+                            : AppColors.gold.withValues(alpha: 0.3),
+                      ),
+                    ),
+                    child: TextField(
+                      controller: _searchController,
+                      style: GoogleFonts.poppins(fontSize: 15),
+                      decoration: InputDecoration(
+                        hintText: 'Search Arabic, translation, meaning...',
+                        hintStyle: GoogleFonts.poppins(
+                          color: Theme.of(context).hintColor,
+                          fontSize: 14,
+                        ),
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          child: Icon(Icons.search, color: AppColors.gold),
+                        ),
+                        suffixIcon: _searchController.text.isNotEmpty
+                            ? IconButton(
+                                icon: const Icon(Icons.clear, size: 20, color: Colors.grey),
+                                onPressed: _clearSearch,
+                              )
+                            : const SizedBox(width: 48), // balance padding
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 16,
                         ),
                       ),
-                      filled: true,
-                      fillColor: Theme.of(context).cardColor,
                     ),
                   ),
                 ),

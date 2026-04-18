@@ -18,8 +18,11 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    // Make status bar transparent for immersive splash
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    // Hide the navigation bar (back, home, recent)
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual, 
+      overlays: [SystemUiOverlay.top],
+    );
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
