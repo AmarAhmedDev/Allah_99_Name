@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:provider/provider.dart';
 import '../constants/app_constants.dart';
 import '../models/allah_name.dart';
+import '../providers/names_provider.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -30,15 +32,23 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
   // Tracks which slots have been correctly filled
   late List<bool> _slotsFilled;
   
+  // Level complete flag
+  bool _levelComplete = false;
+  
   // Audio player for feedback sounds
   final AudioPlayer _audioPlayer = AudioPlayer();
 
   @override
   void initState() {
     super.initState();
+    _initLevel();
+  }
+
+  void _initLevel() {
     _targetNames = widget.names;
     _bankNames = List.from(widget.names)..shuffle();
     _slotsFilled = List.filled(widget.names.length, false);
+    _levelComplete = false;
   }
 
   @override
@@ -63,99 +73,110 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
         _slotsFilled[targetIndex] = true;
         _bankNames.removeWhere((n) => n.id == draggedName.id);
       });
-      // Play success feedback or just show visual
+      // Check if level is complete
       if (_bankNames.isEmpty) {
         _unlockNextLevel();
-        _showLevelCompleteDialog();
+        setState(() {
+          _levelComplete = true;
+        });
       }
     }
   }
 
-  void _showLevelCompleteDialog() {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (_) => AlertDialog(
-        backgroundColor: Theme.of(context).cardColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSizes.radiusLG),
-        ),
-        title: Center(
-          child: Column(
+  void _resetLevel() {
+    setState(() {
+      _initLevel();
+    });
+  }
+
+  void _goToNextLevel() {
+    final namesProvider = context.read<NamesProvider>();
+    final allNames = namesProvider.allNames;
+    const itemsPerLevel = 9;
+    final nextLevelNum = widget.levelNum + 1;
+    final startIdx = (nextLevelNum - 1) * itemsPerLevel;
+    final endIdx = (startIdx + itemsPerLevel > allNames.length)
+        ? allNames.length
+        : startIdx + itemsPerLevel;
+
+    if (startIdx >= allNames.length) {
+      // No more levels - show completion message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Row(
             children: [
-              const Text('🎉', style: TextStyle(fontSize: 48)),
-              const SizedBox(height: AppSizes.paddingMD),
-              Text(
-                'Mashallah!',
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.gold,
-                ),
-              ),
+              const Text('🎉', style: TextStyle(fontSize: 20)),
+              const SizedBox(width: AppSizes.paddingSM),
+              Text('Mashallah! You completed all levels!', style: GoogleFonts.poppins()),
             ],
           ),
+          backgroundColor: AppColors.gold,
+          behavior: SnackBarBehavior.floating,
         ),
-        content: Text(
-          'You have successfully memorized and ordered names from Level ${widget.levelNum}!',
-          textAlign: TextAlign.center,
-          style: GoogleFonts.poppins(),
+      );
+      return;
+    }
+
+    final nextNames = allNames.sublist(startIdx, endIdx);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (_) => PuzzleGameScreen(
+          levelNum: nextLevelNum,
+          names: nextNames,
         ),
-        actions: [
-          Center(
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context); // close dialog
-                Navigator.pop(context); // close screen
-              },
-              child: const Text('Back to Levels'),
-            ),
-          ),
-        ],
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'Level ${widget.levelNum}',
           style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
         ),
+        actions: [
+          if (!_levelComplete)
+            IconButton(
+              icon: const Icon(Icons.refresh_rounded),
+              tooltip: 'Reset Level',
+              onPressed: _resetLevel,
+            ),
+        ],
       ),
       body: Column(
         children: [
-          // Instruction
+          // Instruction / Status
           Padding(
-            padding: const EdgeInsets.all(AppSizes.paddingMD),
+            padding: const EdgeInsets.symmetric(horizontal: AppSizes.paddingMD, vertical: AppSizes.paddingSM),
             child: Text(
-              'Drag the Arabic names into the correct sequential order.',
+              _levelComplete 
+                  ? 'Mashallah! You memorized all ${_targetNames.length} names! 🎉'
+                  : 'Drag the Arabic names into the correct sequential order.',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontStyle: FontStyle.italic,
+                fontStyle: _levelComplete ? FontStyle.normal : FontStyle.italic,
+                fontWeight: _levelComplete ? FontWeight.w600 : FontWeight.normal,
+                color: _levelComplete ? AppColors.gold : null,
               ),
               textAlign: TextAlign.center,
             ),
           ),
           
-          // Target Slots (Scrollable List)
+          // Target Slots - 3x3 Grid (TOP) - Always visible, keeps correct answers
           Expanded(
-            flex: 6,
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: AppSizes.paddingLG),
-              decoration: BoxDecoration(
-                color: Theme.of(context).cardColor.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(AppSizes.radiusLG),
-                border: Border.all(
-                  color: AppColors.borderLight,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppSizes.paddingMD),
+              child: GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: AppSizes.paddingSM,
+                  mainAxisSpacing: AppSizes.paddingSM,
+                  childAspectRatio: 1.5,
                 ),
-              ),
-              child: ListView.separated(
-                padding: const EdgeInsets.all(AppSizes.paddingMD),
                 itemCount: _targetNames.length,
-                separatorBuilder: (_, __) => const SizedBox(height: AppSizes.paddingSM),
                 itemBuilder: (context, index) {
                   return _buildTargetSlot(index);
                 },
@@ -163,43 +184,118 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
             ),
           ),
           
-          const SizedBox(height: AppSizes.paddingMD),
-          
           // Divider
           const Divider(color: AppColors.gold, thickness: 1, endIndent: 30, indent: 30),
           
-          // Bank of Available Names (Grid)
+          // Bottom Section - Bank or Completion Actions
           Expanded(
-            flex: 4,
-            child: Container(
-              padding: const EdgeInsets.all(AppSizes.paddingMD),
-              child: _bankNames.isEmpty 
-              ? Center(
-                  child: Text(
-                    'Level Complete!',
-                    style: GoogleFonts.poppins(
-                      fontSize: 20, 
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.gold,
-                    ),
-                  ),
-                )
-              : GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: AppSizes.paddingSM,
-                    mainAxisSpacing: AppSizes.paddingSM,
-                    childAspectRatio: 1.5,
-                  ),
-                  itemCount: _bankNames.length,
-                  itemBuilder: (context, index) {
-                    return _buildDraggableCard(_bankNames[index]);
-                  },
-                ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppSizes.paddingMD),
+              child: _levelComplete
+                  ? _buildCompletionActions()
+                  : _bankNames.isEmpty
+                      ? const SizedBox.shrink()
+                      : GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: AppSizes.paddingSM,
+                            mainAxisSpacing: AppSizes.paddingSM,
+                            childAspectRatio: 1.5,
+                          ),
+                          itemCount: _bankNames.length,
+                          itemBuilder: (context, index) {
+                            return _buildDraggableCard(_bankNames[index]);
+                          },
+                        ),
             ),
           ),
+          const SizedBox(height: AppSizes.paddingSM),
         ],
+      ),
+    );
+  }
+
+  Widget _buildCompletionActions() {
+    return Center(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Success emoji
+            const Text('🏆', style: TextStyle(fontSize: 48)),
+            const SizedBox(height: AppSizes.paddingMD),
+
+            // Score text
+            Text(
+              'Level ${widget.levelNum} Complete!',
+              style: GoogleFonts.poppins(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: AppColors.gold,
+              ),
+            ),
+            const SizedBox(height: AppSizes.paddingXS),
+            Text(
+              'The correct order is preserved above for review.',
+              style: GoogleFonts.poppins(
+                fontSize: 12,
+                color: Theme.of(context).hintColor,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: AppSizes.paddingLG),
+
+            // Action Buttons
+            Row(
+              children: [
+                // Reset / Play Again
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: _resetLevel,
+                    icon: const Icon(Icons.refresh_rounded, size: 20),
+                    label: Text('Play Again', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      side: const BorderSide(color: AppColors.gold, width: 2),
+                      foregroundColor: AppColors.gold,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(AppSizes.radiusMD),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: AppSizes.paddingMD),
+                // Next Level
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: _goToNextLevel,
+                    icon: const Icon(Icons.arrow_forward_rounded, size: 20),
+                    label: Text('Next Level', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      backgroundColor: AppColors.gold,
+                      foregroundColor: Colors.white,
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(AppSizes.radiusMD),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: AppSizes.paddingSM),
+
+            // Back to Levels
+            TextButton.icon(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.grid_view_rounded, size: 18),
+              label: Text('Back to Levels', style: GoogleFonts.poppins(fontSize: 13)),
+              style: TextButton.styleFrom(foregroundColor: Theme.of(context).hintColor),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -209,13 +305,12 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
     final isFilled = _slotsFilled[index];
 
     return DragTarget<AllahName>(
-      onWillAcceptWithDetails: (details) => !isFilled,
+      onWillAcceptWithDetails: (details) => !isFilled && !_levelComplete,
       onAcceptWithDetails: (details) {
         final draggedName = details.data;
         if (draggedName.id == targetName.id) {
           _onAccept(draggedName, index);
         } else {
-          // Show error
           ScaffoldMessenger.of(context).clearSnackBars();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -223,10 +318,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                 children: [
                   const Icon(Icons.error_outline, color: Colors.white),
                   const SizedBox(width: AppSizes.paddingSM),
-                  Text(
-                    'Not correct! Try another slot.',
-                    style: GoogleFonts.poppins(),
-                  ),
+                  Text('Not correct! Try another slot.', style: GoogleFonts.poppins()),
                 ],
               ),
               backgroundColor: Colors.redAccent,
@@ -240,83 +332,71 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
         final isHovered = candidateData.isNotEmpty;
 
         return Container(
-          height: 70,
           decoration: BoxDecoration(
             color: isFilled 
-                ? AppColors.gold.withOpacity(0.15) 
-                : (isHovered ? Theme.of(context).primaryColor.withOpacity(0.2) : Theme.of(context).cardColor),
-            borderRadius: BorderRadius.circular(AppSizes.radiusMD),
+                ? AppColors.gold.withValues(alpha: 0.15) 
+                : (isHovered ? AppColors.gold.withValues(alpha: 0.1) : Theme.of(context).cardColor),
+            borderRadius: BorderRadius.circular(AppSizes.radiusSM),
             border: Border.all(
               color: isFilled ? AppColors.gold : (isHovered ? AppColors.gold : AppColors.borderLight),
               width: isHovered || isFilled ? 2 : 1,
             ),
           ),
-          child: Row(
+          child: Stack(
             children: [
-              // Number Icon
-              Container(
-                width: 50,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  border: Border(
-                    right: BorderSide(
-                      color: isFilled ? AppColors.gold.withOpacity(0.5) : AppColors.borderLight,
+              // Number badge top-left
+              Positioned(
+                top: 4,
+                left: 4,
+                child: Container(
+                  width: 22,
+                  height: 22,
+                  decoration: BoxDecoration(
+                    color: isFilled ? AppColors.gold : AppColors.gold.withValues(alpha: 0.2),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(
+                    child: Text(
+                      '${targetName.id}',
+                      style: GoogleFonts.poppins(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        color: isFilled ? Colors.white : AppColors.gold,
+                      ),
                     ),
                   ),
                 ),
-                child: Text(
-                  '${targetName.id}',
-                  style: GoogleFonts.poppins(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: isFilled ? AppColors.gold : null,
-                  ),
-                ),
               ),
-              
-              // Content
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSizes.paddingMD),
-                  child: isFilled
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                targetName.transliteration,
-                                style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                            Text(
-                              targetName.arabic,
-                              style: GoogleFonts.amiri(
-                                fontSize: 24,
-                                color: AppColors.gold,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textDirection: TextDirection.rtl,
-                            ),
-                          ],
-                        )
-                      : Text(
-                          targetName.id == 0 ? targetName.transliteration : '???', // Hint
-                          style: GoogleFonts.poppins(
-                            color: Theme.of(context).hintColor.withValues(alpha: 0.5),
-                            fontStyle: FontStyle.italic,
-                            fontSize: 18,
-                          ),
-                        ),
-                ),
-              ),
-              
-              // Success Checkmark
+              // Check icon top-right
               if (isFilled)
-                const Padding(
-                  padding: EdgeInsets.only(right: AppSizes.paddingMD),
-                  child: Icon(Icons.check_circle, color: Colors.green),
+                const Positioned(
+                  top: 4,
+                  right: 4,
+                  child: Icon(Icons.check_circle, color: Colors.green, size: 18),
                 ),
+              // Center content
+              Center(
+                child: isFilled
+                    ? Text(
+                        targetName.arabic,
+                        style: GoogleFonts.amiri(
+                          fontSize: 22,
+                          color: AppColors.gold,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.center,
+                      )
+                    : Text(
+                        index == 0 ? targetName.transliteration : '???',
+                        style: GoogleFonts.poppins(
+                          color: Theme.of(context).hintColor.withValues(alpha: 0.5),
+                          fontStyle: FontStyle.italic,
+                          fontSize: index == 0 ? 16 : 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+              ),
             ],
           ),
         );
@@ -354,7 +434,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
       ),
       childWhenDragging: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).cardColor.withOpacity(0.5),
+          color: Theme.of(context).cardColor.withValues(alpha: 0.5),
           borderRadius: BorderRadius.circular(AppSizes.radiusSM),
           border: Border.all(color: AppColors.borderLight),
         ),
@@ -364,11 +444,11 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
           color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(AppSizes.radiusSM),
           border: Border.all(
-            color: AppColors.gold.withOpacity(0.5),
+            color: AppColors.gold.withValues(alpha: 0.5),
           ),
           boxShadow: [
             BoxShadow(
-              color: AppColors.gold.withOpacity(0.1),
+              color: AppColors.gold.withValues(alpha: 0.1),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),

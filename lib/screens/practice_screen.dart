@@ -446,23 +446,27 @@ class _PracticeScreenState extends State<PracticeScreen>
           ),
           const SizedBox(height: AppSizes.paddingXL),
 
-          // Choices Grid
-          Expanded(
-            child: GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: AppSizes.paddingMD,
-                mainAxisSpacing: AppSizes.paddingMD,
-                childAspectRatio: 1.3,
-              ),
-              itemCount: currentQuestion.choices.length,
-              itemBuilder: (context, index) {
+          const Spacer(),
+
+          // Horizontal Choices Row
+          SizedBox(
+            height: 90,
+            child: Row(
+              children: List.generate(currentQuestion.choices.length, (index) {
                 final choice = currentQuestion.choices[index];
-                return _buildChoiceCard(choice, currentQuestion);
-              },
+                return Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      left: index == 0 ? 0 : 5,
+                      right: index == currentQuestion.choices.length - 1 ? 0 : 5,
+                    ),
+                    child: _buildChoiceCard(choice, currentQuestion),
+                  ),
+                );
+              }),
             ),
           ),
+          const SizedBox(height: AppSizes.paddingSM),
 
           // Next Button with animation
           AnimatedSwitcher(
@@ -575,47 +579,43 @@ class _PracticeScreenState extends State<PracticeScreen>
                 if (_isAnswered && isCorrect)
                   BoxShadow(
                     color: const Color(0xFF00B894).withValues(alpha: 0.2),
-                    blurRadius: 12,
+                    blurRadius: 8,
                     spreadRadius: 1,
                   ),
                 if (_isAnswered && isSelected && !isCorrect)
                   BoxShadow(
                     color: const Color(0xFFFF6B6B).withValues(alpha: 0.2),
-                    blurRadius: 12,
+                    blurRadius: 8,
                     spreadRadius: 1,
                   ),
               ],
             ),
-            child: Stack(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
+                if (_isAnswered && feedbackIcon != null && (isCorrect || isSelected))
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 2),
+                    child: Icon(
+                      feedbackIcon,
+                      color: isCorrect
+                          ? const Color(0xFF00B894)
+                          : const Color(0xFFFF6B6B),
+                      size: 16,
+                    ),
+                  ),
+                Flexible(
                   child: Text(
                     choice.arabic,
                     style: GoogleFonts.amiri(
-                      fontSize: 28,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                   ),
                 ),
-                if (_isAnswered &&
-                    feedbackIcon != null &&
-                    (isCorrect || isSelected))
-                  Positioned(
-                    top: 8,
-                    right: 8,
-                    child: AnimatedOpacity(
-                      duration: const Duration(milliseconds: 300),
-                      opacity: 1.0,
-                      child: Icon(
-                        feedbackIcon,
-                        color: isCorrect
-                            ? const Color(0xFF00B894)
-                            : const Color(0xFFFF6B6B),
-                        size: 22,
-                      ),
-                    ),
-                  ),
               ],
             ),
           ),
