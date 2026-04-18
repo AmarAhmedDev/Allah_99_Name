@@ -18,11 +18,8 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    // Hide the navigation bar (back, home, recent)
-    SystemChrome.setEnabledSystemUIMode(
-      SystemUiMode.manual, 
-      overlays: [SystemUiOverlay.top],
-    );
+    // Hide the navigation bar - auto-hides when tapping the app body
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,

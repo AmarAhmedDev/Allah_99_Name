@@ -16,11 +16,8 @@ void main() {
     DeviceOrientation.portraitUp,
   ]);
 
-  // Hide the navigation bar (back, home, recent) but keep the top status bar
-  SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.manual, 
-    overlays: [SystemUiOverlay.top],
-  );
+  // Hide the navigation bar - auto-hides when tapping the app body after swipe-up
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
