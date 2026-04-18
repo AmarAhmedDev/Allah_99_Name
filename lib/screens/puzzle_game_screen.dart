@@ -300,10 +300,11 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                           ],
                         )
                       : Text(
-                          targetName.transliteration, // Hint
+                          targetName.id == 0 ? targetName.transliteration : '???', // Hint
                           style: GoogleFonts.poppins(
-                            color: Theme.of(context).hintColor,
+                            color: Theme.of(context).hintColor.withValues(alpha: 0.5),
                             fontStyle: FontStyle.italic,
+                            fontSize: 18,
                           ),
                         ),
                 ),
