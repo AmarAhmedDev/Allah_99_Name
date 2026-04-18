@@ -43,17 +43,12 @@ class AudioProvider with ChangeNotifier {
   }
 
   void _initializeAudioPlayer() {
-    // Use mediaPlayer mode for full audio playback (not lowLatency which is for short sounds)
-    _audioPlayer.setReleaseMode(ReleaseMode.stop);
-    _audioPlayer.setPlayerMode(PlayerMode.mediaPlayer);
-    _audioPlayer.setVolume(1.0);
-
+    // Only set up listeners here to avoid unawaited async calls interrupting the first play call
     _audioPlayer.onPlayerComplete.listen((_) {
       _onAudioComplete();
     });
 
     // Track actual player state to keep isPlaying in sync
-    // We only listen for completed. Stop/Pause natively sync via method calls.
     _audioPlayer.onPlayerStateChanged.listen((PlayerState state) {
       if (state == PlayerState.completed) {
         if (!_useTtsFallback) {
@@ -138,9 +133,8 @@ class AudioProvider with ChangeNotifier {
   /// Play audio with full volume - recreate player if needed for reliability
   Future<bool> _tryPlayAudio(String url) async {
     try {
-      // Ensure volume is at maximum before every play (fixes volume drop after id 84)
+      // Re-confirm volume
       await _audioPlayer.setVolume(1.0);
-      await _audioPlayer.setPlayerMode(PlayerMode.mediaPlayer);
 
       if (url.startsWith('assets/audio/')) {
         String langFolder = _isAmharicAudio ? 'Amharic' : 'English';
@@ -167,6 +161,8 @@ class AudioProvider with ChangeNotifier {
         _audioPlayer = AudioPlayer();
         _initializeAudioPlayer();
 
+        await _audioPlayer.setReleaseMode(ReleaseMode.stop);
+        await _audioPlayer.setPlayerMode(PlayerMode.mediaPlayer);
         await _audioPlayer.setVolume(1.0);
         
         if (url.startsWith('assets/audio/')) {

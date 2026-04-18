@@ -371,12 +371,11 @@ class _NameCard extends StatelessWidget {
                             if (index != -1) {
                               provider.setAutoPlay(false); // Only play this track
 
-                              if (provider.currentName?.id == name.id) {
-                                if (provider.isPlaying) {
-                                  await provider.pause();
-                                } else {
-                                  await provider.resume();
-                                }
+                              if (provider.currentName?.id == name.id && provider.isPlaying) {
+                                await provider.pause();
+                              } else if (provider.currentName?.id == name.id && !provider.isPlaying) {
+                                // Could be paused or never played - use playByIndex to be safe
+                                await provider.playByIndex(index);
                               } else {
                                 await provider.playByIndex(index);
                               }
