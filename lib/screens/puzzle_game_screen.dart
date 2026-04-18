@@ -49,6 +49,36 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
     _bankNames = List.from(widget.names)..shuffle();
     _slotsFilled = List.filled(widget.names.length, false);
     _levelComplete = false;
+    _loadLevelProgress();
+  }
+
+  Future<void> _loadLevelProgress() async {
+    final prefs = await SharedPreferences.getInstance();
+    final filledString = prefs.getString('puzzle_level_${widget.levelNum}_progress');
+    
+    if (filledString != null && filledString.isNotEmpty) {
+      final filledList = filledString.split(',');
+      if (filledList.length == _targetNames.length) {
+        setState(() {
+          for (int i = 0; i < filledList.length; i++) {
+            bool isFilled = filledList[i] == '1';
+            _slotsFilled[i] = isFilled;
+            if (isFilled) {
+              _bankNames.removeWhere((n) => n.id == _targetNames[i].id);
+            }
+          }
+          if (_bankNames.isEmpty) {
+            _levelComplete = true;
+          }
+        });
+      }
+    }
+  }
+
+  Future<void> _saveLevelProgress() async {
+    final prefs = await SharedPreferences.getInstance();
+    final filledString = _slotsFilled.map((e) => e ? '1' : '0').join(',');
+    await prefs.setString('puzzle_level_${widget.levelNum}_progress', filledString);
   }
 
   @override
@@ -73,6 +103,8 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
         _slotsFilled[targetIndex] = true;
         _bankNames.removeWhere((n) => n.id == draggedName.id);
       });
+      _saveLevelProgress(); // Save progress whenever a match is made
+      
       // Check if level is complete
       if (_bankNames.isEmpty) {
         _unlockNextLevel();
@@ -83,7 +115,10 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
     }
   }
 
-  void _resetLevel() {
+  void _resetLevel() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('puzzle_level_${widget.levelNum}_progress');
+    
     setState(() {
       _initLevel();
     });
