@@ -7,9 +7,16 @@ import 'providers/audio_provider.dart';
 import 'providers/language_provider.dart';
 import 'utils/app_theme.dart';
 import 'screens/splash_screen.dart';
+import 'services/notification_service.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize notifications
+  final notificationService = NotificationService();
+  await notificationService.initialize();
+  await notificationService.requestPermissions();
+  await notificationService.scheduleRandomDailyReminders();
 
   // Pre-cache for faster startup - don't block on it
   SystemChrome.setPreferredOrientations([

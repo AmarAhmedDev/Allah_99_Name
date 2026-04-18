@@ -446,27 +446,21 @@ class _PracticeScreenState extends State<PracticeScreen>
           ),
           const SizedBox(height: AppSizes.paddingXL),
 
-          const Spacer(),
-
-          // Horizontal Choices Row
-          SizedBox(
-            height: 90,
-            child: Row(
-              children: List.generate(currentQuestion.choices.length, (index) {
-                final choice = currentQuestion.choices[index];
-                return Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      left: index == 0 ? 0 : 5,
-                      right: index == currentQuestion.choices.length - 1 ? 0 : 5,
-                    ),
-                    child: _buildChoiceCard(choice, currentQuestion),
-                  ),
-                );
-              }),
-            ),
+          // 2x2 Grid Choices
+          GridView.count(
+            shrinkWrap: true,
+            crossAxisCount: 2,
+            mainAxisSpacing: AppSizes.paddingMD,
+            crossAxisSpacing: AppSizes.paddingMD,
+            childAspectRatio: 1.2,
+            physics: const NeverScrollableScrollPhysics(),
+            children: List.generate(currentQuestion.choices.length, (index) {
+              final choice = currentQuestion.choices[index];
+              return _buildChoiceCard(choice, currentQuestion);
+            }),
           ),
-          const SizedBox(height: AppSizes.paddingSM),
+          
+          const Spacer(),
 
           // Next Button with animation
           AnimatedSwitcher(
