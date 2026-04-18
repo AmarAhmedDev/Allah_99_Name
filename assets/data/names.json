@@ -6,7 +6,8 @@
       "transliteration": "Allah",
       "meaning_en": "God - The Greatest Name",
       "meaning_am": "አሏህ - ታላቁ ስም",
-      "explanation": "Allah is the greatest and most comprehensive name of God in Islam. It is the personal name of God, unique to Him alone. This name encompasses all of His divine attributes and beautiful names. It is the name most frequently mentioned in the Quran and is the name by which Muslims call upon their Creator in prayer and supplication."
+      "explanation": "Allah is the greatest and most comprehensive name of God in Islam. It is the personal name of God, unique to Him alone. This name encompasses all of His divine attributes and beautiful names. It is the name most frequently mentioned in the Quran and is the name by which Muslims call upon their Creator in prayer and supplication.",
+      "explanation_am": "አላህ በእስልምና ታላቅ እና ሁሉን አቀፍ የአላህ ስም ነው። ለእርሱ ብቻ ልዩ የሆነ የእግዚአብሔር የግል ስም ነው። ይህ ስም ሁሉንም መለኮታዊ ባህሪያቱን እና ውብ ስሞቹን ያጠቃልላል። በቁርኣን ውስጥ በብዛት የተጠቀሰው ስም ሲሆን ሙስሊሞች ፈጣሪያቸውን በጸሎት እና በጸሎት የሚጠሩበት ስም ነው።"
     },
     {
       "id": 1,
@@ -14,7 +15,8 @@
       "transliteration": "Ar-Rahman",
       "meaning_en": "The Most Merciful",
       "meaning_am": "በጣም ርኅሩኅ",
-      "explanation": "Allah's mercy encompasses all of creation, extending to believers and non-believers alike. His mercy is infinite and all-encompassing."
+      "explanation": "Allah's mercy encompasses all of creation, extending to believers and non-believers alike. His mercy is infinite and all-encompassing.",
+      "explanation_am": "የአላህ እዝነት ፍጡራንን ሁሉ ያቅፋል፣ አማኞችንም ላላመኑትም ይዘረጋል። ምሕረቱ ወሰን የለሽ እና ሁሉን ያቀፈ ነው።"
     },
     {
       "id": 2,
@@ -22,7 +24,8 @@
       "transliteration": "Ar-Rahim",
       "meaning_en": "The Most Compassionate",
       "meaning_am": "በጣም አዛኝ",
-      "explanation": "Allah shows special compassion to the believers. His mercy is specifically directed towards those who follow His guidance and seek His forgiveness."
+      "explanation": "Allah shows special compassion to the believers. His mercy is specifically directed towards those who follow His guidance and seek His forgiveness.",
+      "explanation_am": "አላህ ለምእመናን ልዩ ርኅራኄን ያሳያል። ምህረቱ በተለይ መመሪያውን ለተከተሉ እና ምህረትን ለሚሹ ሰዎች ነው።"
     },
     {
       "id": 3,
@@ -30,7 +33,8 @@
       "transliteration": "Al-Malik",
       "meaning_en": "The King",
       "meaning_am": "ንጉሥ",
-      "explanation": "Allah is the absolute sovereign ruler of all creation. His kingdom is eternal, and His authority is supreme over all things."
+      "explanation": "Allah is the absolute sovereign ruler of all creation. His kingdom is eternal, and His authority is supreme over all things.",
+      "explanation_am": "አላህ የፍጥረት ሁሉ ፍፁም ገዢ ነው። መንግሥቱ ዘላለማዊ ነው፣ ሥልጣኑም በነገር ሁሉ ላይ የበላይ ነው።"
     },
     {
       "id": 4,
@@ -38,7 +42,8 @@
       "transliteration": "Al-Quddus",
       "meaning_en": "The Most Holy",
       "meaning_am": "ከነዉር የጸዳ",
-      "explanation": "Allah is pure and perfect, free from all imperfections and defects. He is absolutely sacred and completely holy."
+      "explanation": "Allah is pure and perfect, free from all imperfections and defects. He is absolutely sacred and completely holy.",
+      "explanation_am": "አላህ ንፁህ እና ፍፁም ነው ከጉድለቶች እና ጉድለቶች የጸዳ ነው። እርሱ ፍጹም ቅዱስ እና ፍጹም ቅዱስ ነው።"
     },
     {
       "id": 5,
@@ -46,7 +51,8 @@
       "transliteration": "As-Salam",
       "meaning_en": "The Source of Peace",
       "meaning_am": "የሰላም ምንጭ",
-      "explanation": "Allah is the source of all peace and safety. He is free from all defects and grants peace to His creation."
+      "explanation": "Allah is the source of all peace and safety. He is free from all defects and grants peace to His creation.",
+      "explanation_am": "አላህ የሠላምና የደኅንነት ሁሉ ምንጭ ነው። ከጉድለት ሁሉ የጸዳ ነው ለፍጥረታቱም ሰላምን ይሰጣል።"
     },
     {
       "id": 6,
@@ -54,7 +60,8 @@
       "transliteration": "Al-Mu'min",
       "meaning_en": "The Guardian of Faith",
       "meaning_am": "ለባሮቹ ታማኝ",
-      "explanation": "Allah grants security and watches over the believers. He protects those who have faith and keeps them safe from harm."
+      "explanation": "Allah grants security and watches over the believers. He protects those who have faith and keeps them safe from harm.",
+      "explanation_am": "አላህ ጥበቃን ይሰጣል ምእመናንን ይጠብቃል። ያመኑትን ይጠብቃል ከጉዳትም ይጠብቃቸዋል።"
     },
     {
       "id": 7,
@@ -62,7 +69,8 @@
       "transliteration": "Al-Muhaymin",
       "meaning_en": "The Preserver",
       "meaning_am": "ባሮቹን ጠባቂ",
-      "explanation": "Allah is the overseer and protector of all creation. He witnesses all things and guards over His creation with perfect care."
+      "explanation": "Allah is the overseer and protector of all creation. He witnesses all things and guards over His creation with perfect care.",
+      "explanation_am": "አላህ የፍጥረት ሁሉ ተመልካችና ጠባቂ ነው። እርሱ ሁሉንም ነገር ይመሰክራል እናም ፍጥረቱን ፍጹም በሆነ ጥንቃቄ ይጠብቃል።"
     },
     {
       "id": 8,
@@ -70,7 +78,8 @@
       "transliteration": "Al-'Aziz",
       "meaning_en": "The Almighty",
       "meaning_am": "አሸናፊ",
-      "explanation": "Allah is invincible and all-powerful. Nothing can overcome His will, and He is victorious in all matters."
+      "explanation": "Allah is invincible and all-powerful. Nothing can overcome His will, and He is victorious in all matters.",
+      "explanation_am": "አላህ የማይበገር እና ቻይ ነው። ፈቃዱን የሚያሸንፈው ምንም ነገር የለም, እና በሁሉም ጉዳዮች ላይ አሸናፊ ነው."
     },
     {
       "id": 9,
@@ -78,7 +87,8 @@
       "transliteration": "Al-Jabbar",
       "meaning_en": "The Compeller",
       "meaning_am": "አስገዳጅ",
-      "explanation": "Allah's will cannot be resisted. He has absolute power to enforce His will and nothing can oppose Him."
+      "explanation": "Allah's will cannot be resisted. He has absolute power to enforce His will and nothing can oppose Him.",
+      "explanation_am": "የአላህን ፈቃድ መቃወም አይቻልም። ፈቃዱን ለማስፈጸም ፍጹም ሃይል አለው እና ምንም ሊቃወመው አይችልም።"
     },
     {
       "id": 10,
@@ -86,7 +96,8 @@
       "transliteration": "Al-Mutakabbir",
       "meaning_en": "The Supreme",
       "meaning_am": "ከፍተኛ",
-      "explanation": "Allah is supremely great and majestic. His greatness is beyond comparison and He is exalted above all creation."
+      "explanation": "Allah is supremely great and majestic. His greatness is beyond comparison and He is exalted above all creation.",
+      "explanation_am": "አላህም ታላቅና ታላቅ ነው። ታላቅነቱ ከንጽጽር የዘለለ ነው እና ከፍጥረታት ሁሉ የላቀ ነው።"
     },
     {
       "id": 11,
@@ -94,7 +105,8 @@
       "transliteration": "Al-Khaliq",
       "meaning_en": "The Creator",
       "meaning_am": "ፈጣሪ",
-      "explanation": "Allah creates all things from nothing. He is the originator of all that exists and brings everything into being."
+      "explanation": "Allah creates all things from nothing. He is the originator of all that exists and brings everything into being.",
+      "explanation_am": "አላህ ሁሉንም ነገር ከምንም ይፈጥራል። ያለው ሁሉ ጀማሪ እና ሁሉን ወደ መኖር የሚያመጣ እርሱ ነው።"
     },
     {
       "id": 12,
@@ -102,7 +114,8 @@
       "transliteration": "Al-Bari'",
       "meaning_en": "The Evolver",
       "meaning_am": "አስገኝ",
-      "explanation": "Allah fashions and shapes His creation perfectly. He brings things into existence according to His perfect plan."
+      "explanation": "Allah fashions and shapes His creation perfectly. He brings things into existence according to His perfect plan.",
+      "explanation_am": "አሏህ ፍጥረታቱን በፍፁምነት ይቀርፃሌ። ፍፁም በሆነ እቅዱ መሰረት ነገሮችን ወደ መኖር ያመጣል።"
     },
     {
       "id": 13,
@@ -110,7 +123,8 @@
       "transliteration": "Al-Musawwir",
       "meaning_en": "The Fashioner",
       "meaning_am": "ቅርጽ ሰጪ",
-      "explanation": "Allah gives everything its unique form and shape. He designs and forms all creation with perfect wisdom."
+      "explanation": "Allah gives everything its unique form and shape. He designs and forms all creation with perfect wisdom.",
+      "explanation_am": "አላህ ለሁሉ ነገር ልዩ መልክና ቅርጽ ይሰጣል። ፍጥረትን ሁሉ በፍፁም ጥበብ ቀርጾ ሠራ።"
     },
     {
       "id": 14,
@@ -118,7 +132,8 @@
       "transliteration": "Al-Ghaffar",
       "meaning_en": "The Great Forgiver",
       "meaning_am": "ምህረተ ሰፊ",
-      "explanation": "Allah forgives sins repeatedly and abundantly. His forgiveness is limitless for those who sincerely repent."
+      "explanation": "Allah forgives sins repeatedly and abundantly. His forgiveness is limitless for those who sincerely repent.",
+      "explanation_am": "አላህ ኃጢአትን ደጋግሞ ይምራል። ከልባቸው ንስሐ ለሚገቡ ይቅርታው ወሰን የለውም።"
     },
     {
       "id": 15,
@@ -126,7 +141,8 @@
       "transliteration": "Al-Qahhar",
       "meaning_en": "The Subduer",
       "meaning_am": "ሁሉን የሚቆጣጠር",
-      "explanation": "Allah has complete dominance over all things. Nothing in creation can resist His power or escape His will."
+      "explanation": "Allah has complete dominance over all things. Nothing in creation can resist His power or escape His will.",
+      "explanation_am": "አላህ በነገሩ ሁሉ ላይ ቻይ ነው። በፍጥረት ውስጥ ኃይሉን የሚቃወም ወይም ከፈቃዱ የሚያመልጥ ምንም ነገር የለም።"
     },
     {
       "id": 16,
@@ -134,7 +150,8 @@
       "transliteration": "Al-Wahhab",
       "meaning_en": "The Bestower",
       "meaning_am": "በረከተ ሰፊ",
-      "explanation": "Allah gives endlessly without expectation of return. His gifts are abundant and He bestows blessings upon all creation."
+      "explanation": "Allah gives endlessly without expectation of return. His gifts are abundant and He bestows blessings upon all creation.",
+      "explanation_am": "አላህ መመለሻን ሳይጠብቅ ማለቂያ የለውም። ስጦታዎቹ ብዙ ናቸው ለፍጥረት ሁሉ በረከትን ይሰጣል።"
     },
     {
       "id": 17,
@@ -142,7 +159,8 @@
       "transliteration": "Ar-Razzaq",
       "meaning_en": "The Provider",
       "meaning_am": "ሲሳይን ለጋሽ",
-      "explanation": "Allah provides sustenance to all living creatures. He is the source of all provision and nourishment."
+      "explanation": "Allah provides sustenance to all living creatures. He is the source of all provision and nourishment.",
+      "explanation_am": "አላህ ሕያዋን ፍጥረታትን ሁሉ ሲሳይን ይሰጣል። እርሱ የሁሉም አቅርቦትና የምግብ ምንጭ ነው።"
     },
     {
       "id": 18,
@@ -150,7 +168,8 @@
       "transliteration": "Al-Fattah",
       "meaning_en": "The Opener",
       "meaning_am": "የእዝነት በር ከፋች",
-      "explanation": "Allah opens the way to success and victory. He grants solutions to problems and opens hearts to guidance."
+      "explanation": "Allah opens the way to success and victory. He grants solutions to problems and opens hearts to guidance.",
+      "explanation_am": "አላህ የስኬትና የድል መንገድ ይከፍታል። እሱ ለችግሮች መፍትሄ ይሰጣል እና ልብን ለመምራት ይከፍታል።"
     },
     {
       "id": 19,
@@ -158,7 +177,8 @@
       "transliteration": "Al-'Alim",
       "meaning_en": "The All-Knowing",
       "meaning_am": "ሁሉን አዋቂ",
-      "explanation": "Allah has complete and perfect knowledge of all things, past, present, and future. Nothing is hidden from Him."
+      "explanation": "Allah has complete and perfect knowledge of all things, past, present, and future. Nothing is hidden from Him.",
+      "explanation_am": "አላህ ስላለፈውም፣ አሁን ያለውም፣ ወደፊትም ስላለው ነገር ሁሉ የተሟላ እና የተሟላ እውቀት አለው። ከእርሱ የተሰወረ ምንም ነገር የለም።"
     },
     {
       "id": 20,
@@ -166,7 +186,8 @@
       "transliteration": "Al-Qabid",
       "meaning_en": "The Withholder",
       "meaning_am": "ሲሳይን ነሽ",
-      "explanation": "Allah withholds provision and blessings according to His wisdom. He restrains with purpose and perfect knowledge."
+      "explanation": "Allah withholds provision and blessings according to His wisdom. He restrains with purpose and perfect knowledge.",
+      "explanation_am": "አላህ እንደ ጥበቡ ሲሳይንና በረከቶችን ይከለክላል። በዓላማ እና በፍፁም እውቀት ይገድባል።"
     },
     {
       "id": 21,
@@ -174,7 +195,8 @@
       "transliteration": "Al-Basit",
       "meaning_en": "The Expander",
       "meaning_am": "ሲሳይን ሰጪ",
-      "explanation": "Allah expands and increases provision for whom He wills. He grants abundance and opens opportunities."
+      "explanation": "Allah expands and increases provision for whom He wills. He grants abundance and opens opportunities.",
+      "explanation_am": "አላህ ለሚሻው ሰው ሲሳይን ያሰፋል፤ ያበዛል። እሱ ብዙ ይሰጣል እና እድሎችን ይከፍታል።"
     },
     {
       "id": 22,
@@ -182,7 +204,8 @@
       "transliteration": "Al-Khafid",
       "meaning_en": "The Abaser",
       "meaning_am": "የሚያዋርድ",
-      "explanation": "Allah humbles the arrogant and lowers the status of the oppressors. He brings down those who transgress."
+      "explanation": "Allah humbles the arrogant and lowers the status of the oppressors. He brings down those who transgress.",
+      "explanation_am": "አላህ ትዕቢተኞችን አዋርዶ የጨቋኞችን ደረጃ ዝቅ ያደርጋል። ወሰን አላፊዎችን ያዋርዳል።"
     },
     {
       "id": 23,
@@ -190,7 +213,8 @@
       "transliteration": "Ar-Rafi'",
       "meaning_en": "The Exalter",
       "meaning_am": "ከፍ አድራጊ",
-      "explanation": "Allah raises the righteous in rank and status. He elevates those who are humble and obedient."
+      "explanation": "Allah raises the righteous in rank and status. He elevates those who are humble and obedient.",
+      "explanation_am": "አላህ ጻድቃንን በደረጃ እና በማዕረግ ያነሳል። ትሁት እና ታዛዥ የሆኑትን ከፍ ከፍ ያደርጋል።"
     },
     {
       "id": 24,
@@ -198,7 +222,8 @@
       "transliteration": "Al-Mu'izz",
       "meaning_en": "The Bestower of Honor",
       "meaning_am": "ክብርን የሚሰጥ",
-      "explanation": "Allah grants honor and dignity to whom He wills. He gives strength and glory to His servants."
+      "explanation": "Allah grants honor and dignity to whom He wills. He gives strength and glory to His servants.",
+      "explanation_am": "አላህ ለሚሻው ሰው ክብርን እና ክብርን ይሰጣል። ለአገልጋዮቹ ብርታትንና ክብርን ይሰጣል።"
     },
     {
       "id": 25,
@@ -206,7 +231,8 @@
       "transliteration": "Al-Mudhill",
       "meaning_en": "The Humiliator",
       "meaning_am": "የሚያሳፍር",
-      "explanation": "Allah disgraces those who deserve it through His perfect justice. He removes honor from the undeserving."
+      "explanation": "Allah disgraces those who deserve it through His perfect justice. He removes honor from the undeserving.",
+      "explanation_am": "አላህ በፍፁም ፍርዱ የሚገባውን ያዋርዳል። ከማይገባቸው ክብርን ያስወግዳል።"
     },
     {
       "id": 26,
@@ -214,7 +240,8 @@
       "transliteration": "As-Sami'",
       "meaning_en": "The All-Hearing",
       "meaning_am": "ሁሉን የሚሰማ",
-      "explanation": "Allah hears all sounds and voices, no matter how faint. He listens to all prayers and responds."
+      "explanation": "Allah hears all sounds and voices, no matter how faint. He listens to all prayers and responds.",
+      "explanation_am": "አላህ ምንም ያህል ቢደክም ሁሉንም ድምፆች እና ድምፆች ይሰማል. ሁሉንም ጸሎቶች ሰምቶ ምላሽ ይሰጣል።"
     },
     {
       "id": 27,
@@ -222,7 +249,8 @@
       "transliteration": "Al-Basir",
       "meaning_en": "The All-Seeing",
       "meaning_am": "ሁሉን የሚያይ",
-      "explanation": "Allah sees all things, both visible and hidden. Nothing escapes His sight, however small or concealed."
+      "explanation": "Allah sees all things, both visible and hidden. Nothing escapes His sight, however small or concealed.",
+      "explanation_am": "አላህ የሚታየውንና የተደበቀውን ሁሉ ተመልካች ነው። ትንሽም ይሁን የተደበቀ ቢሆን ​​ከዓይኑ የሚያመልጠው የለም።"
     },
     {
       "id": 28,
@@ -230,7 +258,8 @@
       "transliteration": "Al-Hakam",
       "meaning_en": "The Judge",
       "meaning_am": "ፈራጅ",
-      "explanation": "Allah is the ultimate judge between right and wrong. His judgments are always perfect and just."
+      "explanation": "Allah is the ultimate judge between right and wrong. His judgments are always perfect and just.",
+      "explanation_am": "አላህ በትክክለኛ እና በመጥፎ መካከል የመጨረሻ ዳኛ ነው። የእሱ ፍርዶች ሁል ጊዜ ፍጹም እና ትክክለኛ ናቸው።"
     },
     {
       "id": 29,
@@ -238,7 +267,8 @@
       "transliteration": "Al-'Adl",
       "meaning_en": "The Just",
       "meaning_am": "ፍትሐዊ",
-      "explanation": "Allah is absolutely just and fair in all His dealings. He never wrongs anyone and His justice is perfect."
+      "explanation": "Allah is absolutely just and fair in all His dealings. He never wrongs anyone and His justice is perfect.",
+      "explanation_am": "አላህ በስራው ሁሉ ፍፁም ፍትሀዊ እና ፍትሀዊ ነው። እሱ ማንንም አይበድልም እና ፍትሃዊነቱ ፍጹም ነው።"
     },
     {
       "id": 30,
@@ -246,7 +276,8 @@
       "transliteration": "Al-Latif",
       "meaning_en": "The Subtle",
       "meaning_am": "ረቂቅ",
-      "explanation": "Allah is kind and gentle with His servants. He works in subtle ways and shows kindness in unexpected moments."
+      "explanation": "Allah is kind and gentle with His servants. He works in subtle ways and shows kindness in unexpected moments.",
+      "explanation_am": "አላህ ለባሮቹ ቸር እና የዋህ ነው። እሱ በማይታወቁ መንገዶች ይሠራል እና ባልተጠበቁ ጊዜያት ደግነትን ያሳያል።"
     },
     {
       "id": 31,
@@ -254,7 +285,8 @@
       "transliteration": "Al-Khabir",
       "meaning_en": "The All-Aware",
       "meaning_am": "ሁሉን የሚያዉቅ",
-      "explanation": "Allah is aware of all hidden matters and inner thoughts. He knows the secrets of hearts and the reality of all things."
+      "explanation": "Allah is aware of all hidden matters and inner thoughts. He knows the secrets of hearts and the reality of all things.",
+      "explanation_am": "አላህ ድብቅ ጉዳዮችንና ውስጣዊ ሃሳቦችን ሁሉ ያውቃል። እሱ የልብን ምስጢር እና የነገሮችን እውነታ ያውቃል።"
     },
     {
       "id": 32,
@@ -262,7 +294,8 @@
       "transliteration": "Al-Halim",
       "meaning_en": "The Forbearing",
       "meaning_am": "ታጋሽ",
-      "explanation": "Allah is patient and does not hasten to punish. He gives time for repentance and shows restraint."
+      "explanation": "Allah is patient and does not hasten to punish. He gives time for repentance and shows restraint.",
+      "explanation_am": "አላህ ታጋሽ ነው ለመቅጣትም አይቸኩልም። ለንስሐ ጊዜ ይሰጣል እና መገደብ ያሳያል።"
     },
     {
       "id": 33,
@@ -270,7 +303,8 @@
       "transliteration": "Al-'Azim",
       "meaning_en": "The Magnificent",
       "meaning_am": "ታላቅ",
-      "explanation": "Allah is infinitely great and majestic. His greatness is beyond human comprehension and imagination."
+      "explanation": "Allah is infinitely great and majestic. His greatness is beyond human comprehension and imagination.",
+      "explanation_am": "አላህ ወሰን የሌለው ታላቅ እና ታላቅ ነው። ታላቅነቱ ከሰው ልጅ አእምሮ እና ምናብ በላይ ነው።"
     },
     {
       "id": 34,
@@ -278,7 +312,8 @@
       "transliteration": "Al-Ghafur",
       "meaning_en": "The Forgiver",
       "meaning_am": "ይቅር ባይ",
-      "explanation": "Allah repeatedly forgives those who turn to Him in repentance. His forgiveness covers all sins for the sincere."
+      "explanation": "Allah repeatedly forgives those who turn to Him in repentance. His forgiveness covers all sins for the sincere.",
+      "explanation_am": "አላህ በፀፀት ወደርሱ የተመለሱትን ደጋግሞ ይምራል። ይቅርታው ለቅን ሰዎች ኃጢአትን ሁሉ ይሸፍናል።"
     },
     {
       "id": 35,
@@ -286,7 +321,8 @@
       "transliteration": "Ash-Shakur",
       "meaning_en": "The Appreciative",
       "meaning_am": "አድናቂ",
-      "explanation": "Allah appreciates and rewards even the smallest good deeds. He multiplies rewards and acknowledges efforts."
+      "explanation": "Allah appreciates and rewards even the smallest good deeds. He multiplies rewards and acknowledges efforts.",
+      "explanation_am": "አላህ ትንንሾቹን መልካም ስራዎች እንኳን ያደንቃል ይሸለማል። ሽልማቶችን ያበዛል እና ጥረቶችን ይቀበላል."
     },
     {
       "id": 36,
@@ -294,7 +330,8 @@
       "transliteration": "Al-'Ali",
       "meaning_en": "The Most High",
       "meaning_am": "የሁሉ ነገር የበላይ",
-      "explanation": "Allah is exalted above all creation. His status is supreme and nothing is comparable to Him in highness."
+      "explanation": "Allah is exalted above all creation. His status is supreme and nothing is comparable to Him in highness.",
+      "explanation_am": "አላህ ከፍጡር ሁሉ የላቀ ነው። የእሱ ደረጃ የበላይ ነው እና ምንም ነገር በከፍታነት ከእርሱ ጋር የሚወዳደር የለም።"
     },
     {
       "id": 37,
@@ -302,7 +339,8 @@
       "transliteration": "Al-Kabir",
       "meaning_en": "The Greatest",
       "meaning_am": "ታላቅ",
-      "explanation": "Allah is greater than everything in existence. His greatness has no limits or bounds."
+      "explanation": "Allah is greater than everything in existence. His greatness has no limits or bounds.",
+      "explanation_am": "አላህ ካለ ነገር ሁሉ የላቀ ነው። የሱ ታላቅነት ገደብና ገደብ የለውም።"
     },
     {
       "id": 38,
@@ -310,7 +348,8 @@
       "transliteration": "Al-Hafiz",
       "meaning_en": "The Preserver",
       "meaning_am": "ጠባቂ",
-      "explanation": "Allah protects and preserves all of creation. He guards everything with perfect care and attention."
+      "explanation": "Allah protects and preserves all of creation. He guards everything with perfect care and attention.",
+      "explanation_am": "አላህ ፍጥረታትን ሁሉ ይጠብቃል ይጠብቃል። ሁሉንም ነገር በፍፁም እንክብካቤ እና ጥንቃቄ ይጠብቃል."
     },
     {
       "id": 39,
@@ -318,7 +357,8 @@
       "transliteration": "Al-Muqit",
       "meaning_en": "The Sustainer",
       "meaning_am": "ረዳት",
-      "explanation": "Allah sustains all creation and provides their needs. He has power over all sustenance and nourishment."
+      "explanation": "Allah sustains all creation and provides their needs. He has power over all sustenance and nourishment.",
+      "explanation_am": "አላህ ፍጡራንን ሁሉ ይደግፋል ፍላጎታቸውንም ያሟላል። እርሱ በሲሳይና በመብል ሁሉ ላይ ሥልጣን አለው።"
     },
     {
       "id": 40,
@@ -326,7 +366,8 @@
       "transliteration": "Al-Hasib",
       "meaning_en": "The Reckoner",
       "meaning_am": "የሚተሳሰብ",
-      "explanation": "Allah takes account of all deeds. He is sufficient as a reckoner and His accounting is perfect."
+      "explanation": "Allah takes account of all deeds. He is sufficient as a reckoner and His accounting is perfect.",
+      "explanation_am": "አላህ ሥራውን ሁሉ ያገናዘበ ነው። እርሱ ተቆጣጠሪ በቂ ነው፡ ሒሳቡም ፍጹም ነው።"
     },
     {
       "id": 41,
@@ -334,7 +375,8 @@
       "transliteration": "Al-Jalil",
       "meaning_en": "The Majestic",
       "meaning_am": "ባለ ግርማ ሞገስ",
-      "explanation": "Allah is full of majesty and splendor. His magnificence and grandeur are beyond description."
+      "explanation": "Allah is full of majesty and splendor. His magnificence and grandeur are beyond description.",
+      "explanation_am": "አላህ ግርማ እና ግርማ የተሞላ ነው። ታላቅነቱ እና ታላቅነቱ ከመግለፅ በላይ ነው።"
     },
     {
       "id": 42,
@@ -342,7 +384,8 @@
       "transliteration": "Al-Karim",
       "meaning_en": "The Generous",
       "meaning_am": "ቸር የሆነ",
-      "explanation": "Allah is extremely generous and gives abundantly. His generosity knows no bounds and He gives without measure."
+      "explanation": "Allah is extremely generous and gives abundantly. His generosity knows no bounds and He gives without measure.",
+      "explanation_am": "አላህ በጣም ለጋስ ነው እና ብዙ ይሰጣል። ለጋስነቱ ወሰን የለውም እና ያለ ልክ ይሰጣል።"
     },
     {
       "id": 43,
@@ -350,7 +393,8 @@
       "transliteration": "Ar-Raqib",
       "meaning_en": "The Watchful",
       "meaning_am": "ተጠባባቂ",
-      "explanation": "Allah watches over all creation constantly. Nothing happens without His knowledge and observation."
+      "explanation": "Allah watches over all creation constantly. Nothing happens without His knowledge and observation.",
+      "explanation_am": "አላህ ፍጥረትን ሁሉ ይጠብቃል። ያለ እሱ እውቀት እና ክትትል ምንም ነገር አይከሰትም."
     },
     {
       "id": 44,
@@ -358,7 +402,8 @@
       "transliteration": "Al-Mujib",
       "meaning_en": "The Responsive",
       "meaning_am": "ምላሽ ሰጪ",
-      "explanation": "Allah responds to the prayers and calls of those who call upon Him. He answers supplications in His perfect wisdom."
+      "explanation": "Allah responds to the prayers and calls of those who call upon Him. He answers supplications in His perfect wisdom.",
+      "explanation_am": "አላህ የሚለምኑትን ጸሎት እና ጥሪ ይቀበላል። በፍጹም ጥበቡ ልመናን ይመልሳል።"
     },
     {
       "id": 45,
@@ -366,7 +411,8 @@
       "transliteration": "Al-Wasi'",
       "meaning_en": "The All-Encompassing",
       "meaning_am": "ሁሉን ያካተተ",
-      "explanation": "Allah's mercy, knowledge, and power encompass everything. His vastness has no limits."
+      "explanation": "Allah's mercy, knowledge, and power encompass everything. His vastness has no limits.",
+      "explanation_am": "የአላህ እዝነት፣ እውቀቱ እና ኃይሉ ሁሉንም ነገር ያጠቃልላል። የእሱ ሰፊነት ገደብ የለውም."
     },
     {
       "id": 46,
@@ -374,7 +420,8 @@
       "transliteration": "Al-Hakim",
       "meaning_en": "The Wise",
       "meaning_am": "ጥበበኛ",
-      "explanation": "Allah is infinitely wise in all His decisions and actions. Everything He does has perfect purpose and wisdom."
+      "explanation": "Allah is infinitely wise in all His decisions and actions. Everything He does has perfect purpose and wisdom.",
+      "explanation_am": "አላህ በውሳኔው እና በድርጊቶቹ ሁሉ ጥበበኛ ነው። የሚሠራው ነገር ሁሉ ፍጹም ዓላማና ጥበብ አለው።"
     },
     {
       "id": 47,
@@ -382,7 +429,8 @@
       "transliteration": "Al-Wadud",
       "meaning_en": "The Loving",
       "meaning_am": "ወዳጅ",
-      "explanation": "Allah loves His righteous servants and they love Him. His love is perfect and bestows tranquility."
+      "explanation": "Allah loves His righteous servants and they love Him. His love is perfect and bestows tranquility.",
+      "explanation_am": "አላህ መልካም ባሮቹን ይወዳል እነሱም ይወዱታል። ፍቅሩ ፍጹም ነው እናም መረጋጋትን ይሰጣል።"
     },
     {
       "id": 48,
@@ -390,7 +438,8 @@
       "transliteration": "Al-Majid",
       "meaning_en": "The Glorious",
       "meaning_am": "ክቡር",
-      "explanation": "Allah is full of glory and honor. His glory is supreme and His honor is perfect."
+      "explanation": "Allah is full of glory and honor. His glory is supreme and His honor is perfect.",
+      "explanation_am": "አላህ ክብር እና ክብር የተሞላ ነው። ክብሩ የበላይ ነው ክብሩም ፍጹም ነው።"
     },
     {
       "id": 49,
@@ -398,7 +447,8 @@
       "transliteration": "Al-Ba'ith",
       "meaning_en": "The Resurrector",
       "meaning_am": "ቀስቃሽ",
-      "explanation": "Allah will resurrect all people on the Day of Judgment. He brings the dead back to life for accountability."
+      "explanation": "Allah will resurrect all people on the Day of Judgment. He brings the dead back to life for accountability.",
+      "explanation_am": "አላህ የቂያማ ቀን ሰዎችን ሁሉ ያስነሳል። ለተጠያቂነት ሙታንን ያስነሳል።"
     },
     {
       "id": 50,
@@ -406,7 +456,8 @@
       "transliteration": "Ash-Shahid",
       "meaning_en": "The Witness",
       "meaning_am": "መስካሪ",
-      "explanation": "Allah witnesses all things and is present everywhere. Nothing is hidden from His witness."
+      "explanation": "Allah witnesses all things and is present everywhere. Nothing is hidden from His witness.",
+      "explanation_am": "አላህ በነገሩ ሁሉ ይመሰክራል በሁሉም ቦታ አለ። ከምስክሩ የተሰወረ ምንም ነገር የለም።"
     },
     {
       "id": 51,
@@ -414,7 +465,8 @@
       "transliteration": "Al-Haqq",
       "meaning_en": "The Truth",
       "meaning_am": "እውነት የሆነ",
-      "explanation": "Allah is the ultimate truth and reality. Everything else is temporary, but He is the eternal truth."
+      "explanation": "Allah is the ultimate truth and reality. Everything else is temporary, but He is the eternal truth.",
+      "explanation_am": "አላህ የመጨረሻው እውነት እና እውነታ ነው። የቀረው ሁሉ ጊዜያዊ ነው፣ እርሱ ግን ዘላለማዊ እውነት ነው።"
     },
     {
       "id": 52,
@@ -422,7 +474,8 @@
       "transliteration": "Al-Wakil",
       "meaning_en": "The Trustee",
       "meaning_am": "የሚያስጠጋ",
-      "explanation": "Allah is the ultimate trustee and guardian. Those who rely on Him will find Him sufficient."
+      "explanation": "Allah is the ultimate trustee and guardian. Those who rely on Him will find Him sufficient.",
+      "explanation_am": "አላህ የመጨረሻ ጠባቂ እና ጠባቂ ነው። በእርሱ ላይ የሚመኩ በቂውን ያገኙታል።"
     },
     {
       "id": 53,
@@ -430,7 +483,8 @@
       "transliteration": "Al-Qawi",
       "meaning_en": "The Strong",
       "meaning_am": "ባለ ሙሉ ሃይል",
-      "explanation": "Allah possesses perfect strength and power. His strength never weakens or diminishes."
+      "explanation": "Allah possesses perfect strength and power. His strength never weakens or diminishes.",
+      "explanation_am": "አላህ የፍፁም ጥንካሬ እና ሃይል ባለቤት ነው። ጥንካሬው አይዳከምም ወይም አይቀንስም."
     },
     {
       "id": 54,
@@ -438,7 +492,8 @@
       "transliteration": "Al-Matin",
       "meaning_en": "The Firm",
       "meaning_am": "ብርቱ",
-      "explanation": "Allah is firm and steadfast in His power. His strength is unshakeable and constant."
+      "explanation": "Allah is firm and steadfast in His power. His strength is unshakeable and constant.",
+      "explanation_am": "አላህ በኃይሉ የጸና ነው። ጥንካሬው የማይናወጥ እና ቋሚ ነው."
     },
     {
       "id": 55,
@@ -446,7 +501,8 @@
       "transliteration": "Al-Wali",
       "meaning_en": "The Protector",
       "meaning_am": "ጠባቂ",
-      "explanation": "Allah is the guardian and protector of the believers. He supports and aids those who follow Him."
+      "explanation": "Allah is the guardian and protector of the believers. He supports and aids those who follow Him.",
+      "explanation_am": "አላህ የምእመናን ጠባቂና ጠባቂ ነው። እርሱን የተከተሉትን ይደግፋል እንዲሁም ይረዳል።"
     },
     {
       "id": 56,
@@ -454,7 +510,8 @@
       "transliteration": "Al-Hamid",
       "meaning_en": "The Praiseworthy",
       "meaning_am": "ምስጉን",
-      "explanation": "Allah is worthy of all praise. Every attribute of His is perfect and deserving of praise."
+      "explanation": "Allah is worthy of all praise. Every attribute of His is perfect and deserving of praise.",
+      "explanation_am": "አላህ ምስጋና ይገባው ነው። የሱ ባህሪ ሁሉ ፍፁም እና ምስጋና ይገባዋል።"
     },
     {
       "id": 57,
@@ -462,7 +519,8 @@
       "transliteration": "Al-Muhsi",
       "meaning_en": "The Accountant",
       "meaning_am": "ሂሳብ ያዘጋጀ",
-      "explanation": "Allah keeps count of everything. He has enumerated all things and nothing escapes His reckoning."
+      "explanation": "Allah keeps count of everything. He has enumerated all things and nothing escapes His reckoning.",
+      "explanation_am": "አላህ ሁሉንም ነገር ይቆጥራል። እርሱ ሁሉንም ነገር ዘርዝሯል እና ምንም ነገር ከሂሳቡ አያመልጥም።"
     },
     {
       "id": 58,
@@ -470,7 +528,8 @@
       "transliteration": "Al-Mubdi",
       "meaning_en": "The Originator",
       "meaning_am": "አስገኚ",
-      "explanation": "Allah originates creation without precedent. He begins all things and creates from nothing."
+      "explanation": "Allah originates creation without precedent. He begins all things and creates from nothing.",
+      "explanation_am": "አላህ ፍጥረትን ያለ ቅድመ ሁኔታ ጀምሯል። እርሱ ሁሉን ይጀምራል ከምንም ነገር ይፈጥራል።"
     },
     {
       "id": 59,
@@ -478,7 +537,8 @@
       "transliteration": "Al-Mu'id",
       "meaning_en": "The Restorer",
       "meaning_am": "መላሽ",
-      "explanation": "Allah will restore and recreate all things. He brings back to life what has died."
+      "explanation": "Allah will restore and recreate all things. He brings back to life what has died.",
+      "explanation_am": "አላህ ሁሉንም ነገር ይመልሳል እና ይፈጥራል። የሞተውን ወደ ሕይወት ይመልሳል።"
     },
     {
       "id": 60,
@@ -486,7 +546,8 @@
       "transliteration": "Al-Muhyi",
       "meaning_en": "The Giver of Life",
       "meaning_am": "ሕይወትን ሰጪ",
-      "explanation": "Allah gives life to all living things. He is the source of all life and vitality."
+      "explanation": "Allah gives life to all living things. He is the source of all life and vitality.",
+      "explanation_am": "አላህ ሕያው ለሆነ ነገር ሁሉ ይሰጣል። እሱ የህይወት እና የህይወት ሁሉ ምንጭ ነው።"
     },
     {
       "id": 61,
@@ -494,7 +555,8 @@
       "transliteration": "Al-Mumit",
       "meaning_en": "The Taker of Life",
       "meaning_am": "ሕይወትን ነሺ",
-      "explanation": "Allah takes life when He wills. Death comes only by His command and at His appointed time."
+      "explanation": "Allah takes life when He wills. Death comes only by His command and at His appointed time.",
+      "explanation_am": "አላህ ሲሻ ህይወት ይወስዳል። ሞት የሚመጣው በእሱ ትዕዛዝ እና በጊዜው ብቻ ነው።"
     },
     {
       "id": 62,
@@ -502,7 +564,8 @@
       "transliteration": "Al-Hayy",
       "meaning_en": "The Ever-Living",
       "meaning_am": "ዘላለማዊ ሕያው",
-      "explanation": "Allah is eternally alive and never dies. His life has no beginning and no end."
+      "explanation": "Allah is eternally alive and never dies. His life has no beginning and no end.",
+      "explanation_am": "አላህ ለዘላለም ህያው ነው አይሞትምም። ህይወቱ መጀመሪያም መጨረሻም የለውም።"
     },
     {
       "id": 63,
@@ -510,7 +573,8 @@
       "transliteration": "Al-Qayyum",
       "meaning_en": "The Self-Sustaining",
       "meaning_am": "በራሱ ቋሚ",
-      "explanation": "Allah sustains Himself and all creation. He needs nothing and everything depends on Him."
+      "explanation": "Allah sustains Himself and all creation. He needs nothing and everything depends on Him.",
+      "explanation_am": "አላህ እራሱን እና ፍጥረትን ሁሉ ይደግፋል። እሱ ምንም አያስፈልገውም እና ሁሉም ነገር በእሱ ላይ የተመሰረተ ነው."
     },
     {
       "id": 64,
@@ -518,7 +582,8 @@
       "transliteration": "Al-Wajid",
       "meaning_en": "The Finder",
       "meaning_am": "ፈላጊ",
-      "explanation": "Allah finds and knows all things. Nothing is lost or hidden from Him."
+      "explanation": "Allah finds and knows all things. Nothing is lost or hidden from Him.",
+      "explanation_am": "አላህ ነገሩን ሁሉ ያውቃል። ከእርሱ የተሰወረ ምንም ነገር የለም።"
     },
     {
       "id": 65,
@@ -526,7 +591,8 @@
       "transliteration": "Al-Majid",
       "meaning_en": "The Noble",
       "meaning_am": "የተላቀ",
-      "explanation": "Allah is noble and illustrious. His nobility is perfect and His honor is absolute."
+      "explanation": "Allah is noble and illustrious. His nobility is perfect and His honor is absolute.",
+      "explanation_am": "አላህ የተከበረና የተከበረ ነው። ልዕልናው ፍጹም ነው ክብሩም ፍጹም ነው።"
     },
     {
       "id": 66,
@@ -534,7 +600,8 @@
       "transliteration": "Al-Wahid",
       "meaning_en": "The Unique",
       "meaning_am": "አንድ እና ብቸኛ",
-      "explanation": "Allah is absolutely one and unique. There is nothing like Him in any way."
+      "explanation": "Allah is absolutely one and unique. There is nothing like Him in any way.",
+      "explanation_am": "አላህ ፍፁም አንድ እና ልዩ ነው። በምንም መልኩ እርሱን የሚመስል ነገር የለም።"
     },
     {
       "id": 67,
@@ -542,7 +609,8 @@
       "transliteration": "Al-Ahad",
       "meaning_en": "The One",
       "meaning_am": "አንድ የሆነ",
-      "explanation": "Allah is the absolute One, indivisible and unique. He is one in His essence, attributes, and actions."
+      "explanation": "Allah is the absolute One, indivisible and unique. He is one in His essence, attributes, and actions.",
+      "explanation_am": "አላህ ፍፁም ነው የማይከፋፈል እና ልዩ ነው። በባህሪው፣ በባህሪው እና በድርጊቶቹ አንድ ነው።"
     },
     {
       "id": 68,
@@ -550,7 +618,8 @@
       "transliteration": "As-Samad",
       "meaning_en": "The Eternal Refuge",
       "meaning_am": "የሁሉ መጠጊያ",
-      "explanation": "Allah is the eternal refuge whom all creation depends upon. He needs nothing while everything needs Him."
+      "explanation": "Allah is the eternal refuge whom all creation depends upon. He needs nothing while everything needs Him.",
+      "explanation_am": "አላህ ፍጥረት ሁሉ የተመካበት ዘላለማዊ መጠጊያ ነው። ሁሉም ነገር እሱን ሲፈልግ ምንም አያስፈልገውም."
     },
     {
       "id": 69,
@@ -558,7 +627,8 @@
       "transliteration": "Al-Qadir",
       "meaning_en": "The Capable",
       "meaning_am": "ችሎታ ያለው",
-      "explanation": "Allah has power over all things. He is capable of doing whatever He wills."
+      "explanation": "Allah has power over all things. He is capable of doing whatever He wills.",
+      "explanation_am": "አላህ በነገሩ ሁሉ ላይ ቻይ ነው። የፈለገውን ማድረግ ቻይ ነው።"
     },
     {
       "id": 70,
@@ -566,7 +636,8 @@
       "transliteration": "Al-Muqtadir",
       "meaning_en": "The Omnipotent",
       "meaning_am": "ሁሉን የሚችል",
-      "explanation": "Allah has complete and absolute power. His ability is perfect and without limitation."
+      "explanation": "Allah has complete and absolute power. His ability is perfect and without limitation.",
+      "explanation_am": "አላህ ሙሉ እና ፍፁም ሃይል አለው። ችሎታው ፍጹም እና ገደብ የለሽ ነው."
     },
     {
       "id": 71,
@@ -574,7 +645,8 @@
       "transliteration": "Al-Muqaddim",
       "meaning_en": "The Expediter",
       "meaning_am": "የሚያቀርብ",
-      "explanation": "Allah brings forward what He wills. He advances things according to His wisdom."
+      "explanation": "Allah brings forward what He wills. He advances things according to His wisdom.",
+      "explanation_am": "አላህ የሚሻውን ያመጣል። ነገሮችን እንደ ጥበቡ ያራምዳል።"
     },
     {
       "id": 72,
@@ -582,7 +654,8 @@
       "transliteration": "Al-Mu'akhkhir",
       "meaning_en": "The Delayer",
       "meaning_am": "የሚያዘገይ",
-      "explanation": "Allah delays what He wills. He postpones things according to His perfect timing and wisdom."
+      "explanation": "Allah delays what He wills. He postpones things according to His perfect timing and wisdom.",
+      "explanation_am": "አላህ የሚሻውን ያዘገያል። እንደ ፍፁም ጊዜውና ጥበቡ ነገሮችን ያራዝመዋል።"
     },
     {
       "id": 73,
@@ -590,7 +663,8 @@
       "transliteration": "Al-Awwal",
       "meaning_en": "The First",
       "meaning_am": "የመጀመሪያ",
-      "explanation": "Allah is the First with no beginning. He existed before all creation and time."
+      "explanation": "Allah is the First with no beginning. He existed before all creation and time.",
+      "explanation_am": "መጀመሪያ የሌለው አላህ ነው። ከፍጥረትና ከዘመን ሁሉ በፊት የነበረ ነው።"
     },
     {
       "id": 74,
@@ -598,7 +672,8 @@
       "transliteration": "Al-Akhir",
       "meaning_en": "The Last",
       "meaning_am": "የመጨረሻ",
-      "explanation": "Allah is the Last with no end. He will remain after all creation has perished."
+      "explanation": "Allah is the Last with no end. He will remain after all creation has perished.",
+      "explanation_am": "አላህ መጨረሻ የሌለው የመጨረሻ ነው። ፍጥረት ሁሉ ከጠፋ በኋላ ይኖራል።"
     },
     {
       "id": 75,
@@ -606,7 +681,8 @@
       "transliteration": "Az-Zahir",
       "meaning_en": "The Manifest",
       "meaning_am": "ግልጽ",
-      "explanation": "Allah is evident through His signs and creation. His existence is manifest in all things."
+      "explanation": "Allah is evident through His signs and creation. His existence is manifest in all things.",
+      "explanation_am": "አላህ በምልክቶቹ እና በፍጡራኑ ግልፅ ነው። ሕልውናው በሁሉም ነገር የተገለጠ ነው።"
     },
     {
       "id": 76,
@@ -614,7 +690,8 @@
       "transliteration": "Al-Batin",
       "meaning_en": "The Hidden",
       "meaning_am": "የተደበቀ",
-      "explanation": "Allah is hidden from our senses and sight. His essence cannot be comprehended by creation."
+      "explanation": "Allah is hidden from our senses and sight. His essence cannot be comprehended by creation.",
+      "explanation_am": "አላህ ከስሜት ህዋሳችን እና ከአይናችን ተሰውሯል። የሱን ማንነት በፍጥረት መረዳት አይቻልም።"
     },
     {
       "id": 77,
@@ -622,7 +699,8 @@
       "transliteration": "Al-Wali",
       "meaning_en": "The Governor",
       "meaning_am": "ገዥ",
-      "explanation": "Allah governs all affairs of creation. He alone has true authority and control."
+      "explanation": "Allah governs all affairs of creation. He alone has true authority and control.",
+      "explanation_am": "አላህ የፍጥረትን ጉዳይ ሁሉ ይመራል። እሱ ብቻ እውነተኛ ሥልጣንና ቁጥጥር አለው።"
     },
     {
       "id": 78,
@@ -630,7 +708,8 @@
       "transliteration": "Al-Muta'ali",
       "meaning_en": "The Most Exalted",
       "meaning_am": "በጣም ከፍ ያለ",
-      "explanation": "Allah is exalted far above all creation. His status is beyond all comparison and imagination."
+      "explanation": "Allah is exalted far above all creation. His status is beyond all comparison and imagination.",
+      "explanation_am": "አላህ ከፍጡር ሁሉ የላቀ ነው። የእሱ ደረጃ ከማነፃፀር እና ከማሰብ በላይ ነው."
     },
     {
       "id": 79,
@@ -638,7 +717,8 @@
       "transliteration": "Al-Barr",
       "meaning_en": "The Source of Goodness",
       "meaning_am": "የመልካም ነገር ምንጭ",
-      "explanation": "Allah is the source of all goodness and kindness. His benevolence encompasses all creation."
+      "explanation": "Allah is the source of all goodness and kindness. His benevolence encompasses all creation.",
+      "explanation_am": "አላህ የመልካም እና የደግነት ሁሉ ምንጭ ነው። ቸርነቱ ፍጥረትን ሁሉ ያጠቃልላል።"
     },
     {
       "id": 80,
@@ -646,7 +726,8 @@
       "transliteration": "At-Tawwab",
       "meaning_en": "The Acceptor of Repentance",
       "meaning_am": "ጸጸትን ተቀባይ",
-      "explanation": "Allah accepts repentance repeatedly. He turns to those who turn to Him in sincere repentance."
+      "explanation": "Allah accepts repentance repeatedly. He turns to those who turn to Him in sincere repentance.",
+      "explanation_am": "አላህ ንስሐን ደጋግሞ ይቀበላል። ወደ እነዚያም በጸጸት ወደርሱ ተመለሱ።"
     },
     {
       "id": 81,
@@ -654,7 +735,8 @@
       "transliteration": "Al-Muntaqim",
       "meaning_en": "The Avenger",
       "meaning_am": "ተበቃይ",
-      "explanation": "Allah takes just vengeance on the oppressors. He punishes those who persist in wrongdoing."
+      "explanation": "Allah takes just vengeance on the oppressors. He punishes those who persist in wrongdoing.",
+      "explanation_am": "አላህ በዳዮች ላይ ፍትሃዊ ይበቀላል። በበደል የጸኑትን ይቀጣል።"
     },
     {
       "id": 82,
@@ -662,7 +744,8 @@
       "transliteration": "Al-'Afuww",
       "meaning_en": "The Pardoner",
       "meaning_am": "ይቅር ባይ",
-      "explanation": "Allah pardons and erases sins. He forgives completely and removes the consequences of wrongdoing."
+      "explanation": "Allah pardons and erases sins. He forgives completely and removes the consequences of wrongdoing.",
+      "explanation_am": "አላህ ኃጢአትን ይምራል ይሰርሳልም። እሱ ሙሉ በሙሉ ይቅር ይላል እና የበደልን መዘዝ ያስወግዳል."
     },
     {
       "id": 83,
@@ -670,7 +753,8 @@
       "transliteration": "Ar-Ra'uf",
       "meaning_en": "The Kind",
       "meaning_am": "በጣም ደግ",
-      "explanation": "Allah is extremely kind and compassionate. His kindness is gentle and His mercy is tender."
+      "explanation": "Allah is extremely kind and compassionate. His kindness is gentle and His mercy is tender.",
+      "explanation_am": "አላህ እጅግ በጣም ሩህሩህ እና አዛኝ ነው። ቸርነቱ የዋህ ምሕረቱም የዋህ ነው።"
     },
     {
       "id": 84,
@@ -678,7 +762,8 @@
       "transliteration": "Malik-ul-Mulk",
       "meaning_en": "Master of the Kingdom",
       "meaning_am": "የንጉሶች ንጉስ",
-      "explanation": "Allah owns and controls all kingdoms and sovereignty. All power and authority belong to Him alone."
+      "explanation": "Allah owns and controls all kingdoms and sovereignty. All power and authority belong to Him alone.",
+      "explanation_am": "አላህ ሁሉንም መንግስታት እና ሉዓላዊነት በባለቤትነት ይቆጣጠራል። ኃይልና ሥልጣን ሁሉ የርሱ ብቻ ነው።"
     },
     {
       "id": 85,
@@ -686,7 +771,8 @@
       "transliteration": "Dhul-Jalali wal-Ikram",
       "meaning_en": "Lord of Majesty and Bounty",
       "meaning_am": "የክብር እና ጸጋ ባለቢት",
-      "explanation": "Allah possesses perfect majesty and generosity. He deserves utmost reverence and gives abundant blessings."
+      "explanation": "Allah possesses perfect majesty and generosity. He deserves utmost reverence and gives abundant blessings.",
+      "explanation_am": "አላህ ፍፁም ልዕልና እና ልግስና ባለቤት ነው። እጅግ የላቀ ክብር ይገባዋል እና ብዙ በረከትን ይሰጣል።"
     },
     {
       "id": 86,
@@ -694,7 +780,8 @@
       "transliteration": "Al-Muqsit",
       "meaning_en": "The Equitable",
       "meaning_am": "ፍትሐዊ",
-      "explanation": "Allah is perfectly fair and just. He establishes justice and equity in all matters."
+      "explanation": "Allah is perfectly fair and just. He establishes justice and equity in all matters.",
+      "explanation_am": "አላህ ፍፁም ፍትሃዊ እና ትክክለኛ ነው። በሁሉም ጉዳዮች ላይ ፍትህ እና ፍትሃዊነትን ያስቀምጣል."
     },
     {
       "id": 87,
@@ -702,7 +789,8 @@
       "transliteration": "Al-Jami'",
       "meaning_en": "The Gatherer",
       "meaning_am": "ሰብሳቢ",
-      "explanation": "Allah will gather all people on the Day of Judgment. He brings together what is scattered."
+      "explanation": "Allah will gather all people on the Day of Judgment. He brings together what is scattered.",
+      "explanation_am": "አላህ በቂያማ ቀን ሰዎችን ሁሉ ይሰበስባል። የተበታተነውን ይሰበስባል።"
     },
     {
       "id": 88,
@@ -710,7 +798,8 @@
       "transliteration": "Al-Ghani",
       "meaning_en": "The Self-Sufficient",
       "meaning_am": "የተብቃቃ",
-      "explanation": "Allah is completely independent and needs nothing. All creation depends on Him while He depends on none."
+      "explanation": "Allah is completely independent and needs nothing. All creation depends on Him while He depends on none.",
+      "explanation_am": "አላህ ሙሉ በሙሉ ነፃ ነው ምንም አያስፈልገውም። ፍጥረት ሁሉ በእርሱ ላይ የተመካ እርሱ ግን በማንም ላይ ነው።"
     },
     {
       "id": 89,
@@ -718,7 +807,8 @@
       "transliteration": "Al-Mughni",
       "meaning_en": "The Enricher",
       "meaning_am": "ሀብታም አድራጊ",
-      "explanation": "Allah enriches whom He wills. He grants wealth and sufficiency to His servants."
+      "explanation": "Allah enriches whom He wills. He grants wealth and sufficiency to His servants.",
+      "explanation_am": "አላህ የሚሻውን ያበለጽጋል። ለባሮቹ ሀብትን እና ጥቅምን ይሰጣል።"
     },
     {
       "id": 90,
@@ -726,7 +816,8 @@
       "transliteration": "Al-Mani'",
       "meaning_en": "The Preventer",
       "meaning_am": "ከልካይ",
-      "explanation": "Allah prevents harm from reaching His servants. He withholds according to His wisdom."
+      "explanation": "Allah prevents harm from reaching His servants. He withholds according to His wisdom.",
+      "explanation_am": "አላህ በባሮቹ ላይ ጉዳት እንዳይደርስ ይከለክላል። እንደ ጥበቡ ይከለክላል።"
     },
     {
       "id": 91,
@@ -734,7 +825,8 @@
       "transliteration": "Ad-Darr",
       "meaning_en": "The Distresser",
       "meaning_am": "የሚጎዳ",
-      "explanation": "Allah can cause distress and hardship when decreed. All harm comes only by His permission."
+      "explanation": "Allah can cause distress and hardship when decreed. All harm comes only by His permission.",
+      "explanation_am": "አላህ በተወሰነ ጊዜ ጭንቀትንና ችግርን ሊያመጣ ይችላል። ጉዳቱ ሁሉ የሚመጣው በሱ ፍቃድ ብቻ ነው።"
     },
     {
       "id": 92,
@@ -742,7 +834,8 @@
       "transliteration": "An-Nafi'",
       "meaning_en": "The Benefactor",
       "meaning_am": "ጠቃሚ",
-      "explanation": "Allah brings benefit to whom He wills. All good and advantage comes from Him."
+      "explanation": "Allah brings benefit to whom He wills. All good and advantage comes from Him.",
+      "explanation_am": "አላህ ለሚሻው ሰው ጥቅምን ይሰጣል። መልካም እና ጥቅም ሁሉ ከርሱ ዘንድ ነው።"
     },
     {
       "id": 93,
@@ -750,7 +843,8 @@
       "transliteration": "An-Nur",
       "meaning_en": "The Light",
       "meaning_am": "ብርሃን",
-      "explanation": "Allah is the light of the heavens and earth. He guides and illuminates hearts and minds."
+      "explanation": "Allah is the light of the heavens and earth. He guides and illuminates hearts and minds.",
+      "explanation_am": "አላህ የሰማያትና የምድር ብርሃን ነው። እሱ ልብንና አእምሮን ይመራል እና ያበራል።"
     },
     {
       "id": 94,
@@ -758,7 +852,8 @@
       "transliteration": "Al-Hadi",
       "meaning_en": "The Guide",
       "meaning_am": "መሪ",
-      "explanation": "Allah guides to the right path. He shows the way to truth and righteousness."
+      "explanation": "Allah guides to the right path. He shows the way to truth and righteousness.",
+      "explanation_am": "አላህ ቅኑን መንገድ ይመራል። የእውነትንና የጽድቅን መንገድ ያሳያል።"
     },
     {
       "id": 95,
@@ -766,7 +861,8 @@
       "transliteration": "Al-Badi'",
       "meaning_en": "The Incomparable",
       "meaning_am": "የማይነጻጸር",
-      "explanation": "Allah creates in unprecedented ways. His creation is unique and without comparison."
+      "explanation": "Allah creates in unprecedented ways. His creation is unique and without comparison.",
+      "explanation_am": "አላህ ከዚህ በፊት ታይቶ በማይታወቅ መንገድ ይፈጥራል። የእሱ ፍጥረት ልዩ እና ንጽጽር የሌለው ነው."
     },
     {
       "id": 96,
@@ -774,7 +870,8 @@
       "transliteration": "Al-Baqi",
       "meaning_en": "The Everlasting",
       "meaning_am": "ዘላለማዊ",
-      "explanation": "Allah is eternal and everlasting. He remains forever while everything else perishes."
+      "explanation": "Allah is eternal and everlasting. He remains forever while everything else perishes.",
+      "explanation_am": "አላህ ዘላለማዊ እና ዘላለማዊ ነው። ሁሉም ነገር ሲጠፋ ለዘላለም ይኖራል."
     },
     {
       "id": 97,
@@ -782,7 +879,8 @@
       "transliteration": "Al-Warith",
       "meaning_en": "The Inheritor",
       "meaning_am": "ወራሽ",
-      "explanation": "Allah will inherit all that exists. Everything returns to Him after creation perishes."
+      "explanation": "Allah will inherit all that exists. Everything returns to Him after creation perishes.",
+      "explanation_am": "ያለውን ሁሉ አላህ ይወርሳል። ፍጥረት ከጠፋ በኋላ ሁሉም ነገር ወደ እርሱ ይመለሳል።"
     },
     {
       "id": 98,
@@ -790,7 +888,8 @@
       "transliteration": "Ar-Rashid",
       "meaning_en": "The Guide to the Right Path",
       "meaning_am": "ወደ ትክክለኛው መንገድ የሚመራ",
-      "explanation": "Allah guides with perfect wisdom. His guidance is always right and leads to righteousness."
+      "explanation": "Allah guides with perfect wisdom. His guidance is always right and leads to righteousness.",
+      "explanation_am": "አላህ ፍጹም በሆነ ጥበብ ይመራል። የእርሱ መመሪያ ሁል ጊዜ ትክክለኛ እና ወደ ጽድቅ ይመራል."
     },
     {
       "id": 99,
@@ -798,7 +897,8 @@
       "transliteration": "As-Sabur",
       "meaning_en": "The Patient",
       "meaning_am": "ታጋሽ",
-      "explanation": "Allah is supremely patient. He does not hasten to punish and gives time for correction."
+      "explanation": "Allah is supremely patient. He does not hasten to punish and gives time for correction.",
+      "explanation_am": "አላህ በጣም ታጋሽ ነው። ለመቅጣት አይቸኩልም እና ለማረም ጊዜ ይሰጣል."
     }
   ]
 }

@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import '../constants/app_constants.dart';
 import '../models/allah_name.dart';
 import '../providers/names_provider.dart';
+import '../providers/language_provider.dart';
+import '../constants/app_strings.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -142,7 +144,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
             children: [
               const Text('🎉', style: TextStyle(fontSize: 20)),
               const SizedBox(width: AppSizes.paddingSM),
-              Text('Mashallah! You completed all levels!', style: GoogleFonts.poppins()),
+              Text(AppStrings.completedAllLevels(context.read<LanguageProvider>().isAmharicAudio), style: GoogleFonts.poppins()),
             ],
           ),
           backgroundColor: AppColors.gold,
@@ -169,14 +171,14 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Level ${widget.levelNum}',
+          '${AppStrings.level(context.watch<LanguageProvider>().isAmharicAudio)}${widget.levelNum}',
           style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
         ),
         actions: [
           if (!_levelComplete)
             IconButton(
               icon: const Icon(Icons.refresh_rounded),
-              tooltip: 'Reset Level',
+              tooltip: AppStrings.reset(context.watch<LanguageProvider>().isAmharicAudio),
               onPressed: _resetLevel,
             ),
         ],
@@ -188,8 +190,8 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.paddingMD, vertical: AppSizes.paddingSM),
             child: Text(
               _levelComplete 
-                  ? 'Mashallah! You memorized all ${_targetNames.length} names! 🎉'
-                  : 'Drag the Arabic names into the correct sequential order.',
+                  ? AppStrings.allMemorized(context.watch<LanguageProvider>().isAmharicAudio, _targetNames.length)
+                  : AppStrings.dragInstructions(context.watch<LanguageProvider>().isAmharicAudio),
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontStyle: _levelComplete ? FontStyle.normal : FontStyle.italic,
                 fontWeight: _levelComplete ? FontWeight.w600 : FontWeight.normal,
@@ -263,7 +265,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
 
             // Score text
             Text(
-              'Level ${widget.levelNum} Complete!',
+              AppStrings.levelComplete(context.watch<LanguageProvider>().isAmharicAudio, widget.levelNum),
               style: GoogleFonts.poppins(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -272,7 +274,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
             ),
             const SizedBox(height: AppSizes.paddingXS),
             Text(
-              'The correct order is preserved above for review.',
+              AppStrings.orderPreserved(context.watch<LanguageProvider>().isAmharicAudio),
               style: GoogleFonts.poppins(
                 fontSize: 12,
                 color: Theme.of(context).hintColor,
@@ -289,7 +291,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                   child: OutlinedButton.icon(
                     onPressed: _resetLevel,
                     icon: const Icon(Icons.refresh_rounded, size: 20),
-                    label: Text('Play Again', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
+                    label: Text(AppStrings.playAgain(context.watch<LanguageProvider>().isAmharicAudio), style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       side: const BorderSide(color: AppColors.gold, width: 2),
@@ -306,7 +308,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                   child: ElevatedButton.icon(
                     onPressed: _goToNextLevel,
                     icon: const Icon(Icons.arrow_forward_rounded, size: 20),
-                    label: Text('Next Level', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
+                    label: Text(AppStrings.nextLevel(context.watch<LanguageProvider>().isAmharicAudio), style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       backgroundColor: AppColors.gold,
@@ -326,7 +328,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
             TextButton.icon(
               onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.grid_view_rounded, size: 18),
-              label: Text('Back to Levels', style: GoogleFonts.poppins(fontSize: 13)),
+              label: Text(AppStrings.backToLevels(context.watch<LanguageProvider>().isAmharicAudio), style: GoogleFonts.poppins(fontSize: 13)),
               style: TextButton.styleFrom(foregroundColor: Theme.of(context).hintColor),
             ),
           ],
@@ -353,7 +355,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                 children: [
                   const Icon(Icons.error_outline, color: Colors.white),
                   const SizedBox(width: AppSizes.paddingSM),
-                  Text('Not correct! Try another slot.', style: GoogleFonts.poppins()),
+                  Text(AppStrings.notQuiteRight(context.read<LanguageProvider>().isAmharicAudio), style: GoogleFonts.poppins()),
                 ],
               ),
               backgroundColor: Colors.redAccent,

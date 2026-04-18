@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../constants/app_constants.dart';
 import '../providers/names_provider.dart';
+import '../providers/language_provider.dart';
+import '../constants/app_strings.dart';
 import 'puzzle_game_screen.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -48,7 +50,7 @@ class _PuzzleLevelsScreenState extends State<PuzzleLevelsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Memorization Puzzle',
+          AppStrings.puzzleLevels(context.watch<LanguageProvider>().isAmharicAudio),
           style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
         ),
       ),
@@ -87,7 +89,7 @@ class _PuzzleLevelsScreenState extends State<PuzzleLevelsScreen> {
                               const Icon(Icons.lock, color: Colors.white),
                               const SizedBox(width: AppSizes.paddingSM),
                               Text(
-                                'Complete Level ${_unlockedLevel} to unlock this!',
+                                AppStrings.completeToUnlock(context.read<LanguageProvider>().isAmharicAudio, _unlockedLevel),
                                 style: GoogleFonts.poppins(),
                               ),
                             ],
@@ -183,7 +185,7 @@ class _LevelCard extends StatelessWidget {
             ),
             const SizedBox(height: AppSizes.paddingMD),
             Text(
-              'Level $levelNum',
+              '${AppStrings.level(context.watch<LanguageProvider>().isAmharicAudio)}$levelNum',
               style: GoogleFonts.poppins(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -192,7 +194,7 @@ class _LevelCard extends StatelessWidget {
             ),
             const SizedBox(height: AppSizes.paddingXS),
             Text(
-              'Names $startName - $endName',
+              '${AppStrings.names(context.watch<LanguageProvider>().isAmharicAudio)}$startName - $endName',
               style: theme.textTheme.bodySmall?.copyWith(
                     color: isLocked ? Colors.grey : AppColors.gold,
                   ),

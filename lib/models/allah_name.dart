@@ -5,6 +5,7 @@ class AllahName {
   final String meaningEn;
   final String meaningAm;
   final String explanation;
+  final String explanationAm;
   final String? audioUrl;
 
   AllahName({
@@ -14,6 +15,7 @@ class AllahName {
     required this.meaningEn,
     required this.meaningAm,
     required this.explanation,
+    required this.explanationAm,
     this.audioUrl,
   });
 
@@ -30,6 +32,7 @@ class AllahName {
       meaningEn: json['meaning_en'] as String,
       meaningAm: json['meaning_am'] as String? ?? '',
       explanation: json['explanation'] as String,
+      explanationAm: json['explanation_am'] as String? ?? json['explanation'] as String,
       audioUrl: json['audio_url'] as String? ?? generatedAudioUrl,
     );
   }
@@ -42,6 +45,7 @@ class AllahName {
       'meaning_en': meaningEn,
       'meaning_am': meaningAm,
       'explanation': explanation,
+      'explanation_am': explanationAm,
       'audio_url': audioUrl,
     };
   }
@@ -100,6 +104,7 @@ class AllahName {
     String? meaningEn,
     String? meaningAm,
     String? explanation,
+    String? explanationAm,
     String? audioUrl,
   }) {
     return AllahName(
@@ -109,6 +114,7 @@ class AllahName {
       meaningEn: meaningEn ?? this.meaningEn,
       meaningAm: meaningAm ?? this.meaningAm,
       explanation: explanation ?? this.explanation,
+      explanationAm: explanationAm ?? this.explanationAm,
       audioUrl: audioUrl ?? this.audioUrl,
     );
   }

@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../constants/app_constants.dart';
 import '../providers/theme_provider.dart';
 import '../providers/language_provider.dart';
+import '../constants/app_strings.dart';
+import '../utils/smooth_page_route.dart';
 import 'names_list_screen.dart';
 import 'audio_player_screen.dart';
 import 'practice_screen.dart';
@@ -18,7 +20,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Asma\'ul Husna',
+          AppStrings.appTitle(context.watch<LanguageProvider>().isAmharicAudio),
           style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
         ),
         actions: [
@@ -33,9 +35,36 @@ class HomeScreen extends StatelessWidget {
             },
           ),
           PopupMenuButton<bool>(
-            icon: const Icon(Icons.language),
             tooltip: 'Select Audio Language',
             initialValue: context.watch<LanguageProvider>().isAmharicAudio,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: AppColors.gold.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: AppColors.gold.withValues(alpha: 0.5)),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.language, size: 16, color: AppColors.gold),
+                    const SizedBox(width: 6),
+                    Text(
+                      'Lang/ቋንቋ',
+                      style: GoogleFonts.poppins(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.gold,
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    const Icon(Icons.arrow_drop_down, size: 18, color: AppColors.gold),
+                  ],
+                ),
+              ),
+            ),
             onSelected: (bool isAmharic) {
               context.read<LanguageProvider>().toggleLanguage(isAmharic);
             },
@@ -69,181 +98,174 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(AppSizes.paddingXL),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Mosque Icon
-                const Text('🕌', style: TextStyle(fontSize: 80)),
-                const SizedBox(height: AppSizes.paddingLG),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 800),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(AppSizes.paddingXL),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Mosque Icon
+                  const Text('🕌', style: TextStyle(fontSize: 80)),
+                  const SizedBox(height: AppSizes.paddingLG),
 
-                // Title
-                Text(
-                  'Asma\'ul Husna',
-                  style: GoogleFonts.poppins(
-                    fontSize: 32,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.gold,
-                  ),
-                ),
-                const SizedBox(height: AppSizes.paddingMD),
-
-                // Arabic Title
-                Text(
-                  'أَسْمَاءُ ٱللَّٰهِ ٱلْحُسْنَىٰ',
-                  style: GoogleFonts.amiri(
-                    fontSize: 40,
-                    fontWeight: FontWeight.w700,
-                    height: 1.8,
-                  ),
-                  textDirection: TextDirection.rtl,
-                ),
-                const SizedBox(height: AppSizes.paddingLG),
-
-                // Subtitle
-                Text(
-                  'Discover the 99 Beautiful Names of Allah',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? AppColors.textSecondaryDark
-                        : AppColors.textSecondaryLight,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: AppSizes.padding2XL),
-
-                // Start Learning Button
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const NamesListScreen(),
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.book),
-                    label: const Text('Start Learning'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: AppSizes.paddingLG,
-                      ),
+                  // Title
+                  Text(
+                    AppStrings.appTitle(context.watch<LanguageProvider>().isAmharicAudio),
+                    style: GoogleFonts.poppins(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.gold,
                     ),
                   ),
-                ),
-                const SizedBox(height: AppSizes.paddingMD),
+                  const SizedBox(height: AppSizes.paddingMD),
 
-                // Play All Names Button
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const AudioPlayerScreen(),
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.play_arrow),
-                    label: const Text('Play All Names'),
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: AppSizes.paddingLG,
-                      ),
+                  // Arabic Title
+                  Text(
+                    'أَسْمَاءُ ٱللَّٰهِ ٱلْحُسْنَىٰ',
+                    style: GoogleFonts.amiri(
+                      fontSize: 40,
+                      fontWeight: FontWeight.w700,
+                      height: 1.8,
                     ),
+                    textDirection: TextDirection.rtl,
                   ),
-                ),
-                const SizedBox(height: AppSizes.padding2XL),
+                  const SizedBox(height: AppSizes.paddingLG),
 
-                // Feature Cards
-                Row(
-                  children: [
-                    Expanded(
-                      child: _FeatureCard(
-                        icon: '📚',
-                        title: 'Test',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const PracticeScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    const SizedBox(width: AppSizes.paddingMD),
-                    Expanded(
-                      child: _FeatureCard(
-                        icon: '📿',
-                        title: 'Tasbih',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const TasbihScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    const SizedBox(width: AppSizes.paddingMD),
-                    Expanded(
-                      child: _FeatureCard(
-                        icon: '🧩',
-                        title: 'Puzzle',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const PuzzleLevelsScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: AppSizes.padding2XL),
-
-                // Islamic Quote
-                Container(
-                  padding: const EdgeInsets.all(AppSizes.paddingLG),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).cardColor,
-                    borderRadius: BorderRadius.circular(AppSizes.radiusLG),
-                    border: Border.all(
+                  // Subtitle
+                  Text(
+                    AppStrings.discoverText(context.watch<LanguageProvider>().isAmharicAudio),
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? AppColors.borderDark
-                          : AppColors.borderLight,
+                          ? AppColors.textSecondaryDark
+                          : AppColors.textSecondaryLight,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: AppSizes.padding2XL),
+
+                  // Start Learning Button
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          SmoothPageRoute(page: const NamesListScreen()),
+                        );
+                      },
+                      icon: const Icon(Icons.book),
+                      label: Text(AppStrings.startLearning(context.watch<LanguageProvider>().isAmharicAudio)),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: AppSizes.paddingLG,
+                        ),
+                      ),
                     ),
                   ),
-                  child: Column(
-                    children: [
-                      Text(
-                        '"Indeed, Allah has ninety-nine names, one hundred less one. Whoever encompasses them will enter Paradise."',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontStyle: FontStyle.italic,
-                          height: 1.7,
+                  const SizedBox(height: AppSizes.paddingMD),
+
+                  // Play All Names Button
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton.icon(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          SmoothPageRoute(page: const AudioPlayerScreen()),
+                        );
+                      },
+                      icon: const Icon(Icons.play_arrow),
+                      label: Text(AppStrings.playAllNames(context.watch<LanguageProvider>().isAmharicAudio)),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: AppSizes.paddingLG,
                         ),
-                        textAlign: TextAlign.center,
                       ),
-                      const SizedBox(height: AppSizes.paddingSM),
-                      Text(
-                        '- Sahih Bukhari',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: AppSizes.padding2XL),
+
+                  // Feature Cards
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _FeatureCard(
+                          icon: '📚',
+                          title: AppStrings.testFeature(context.watch<LanguageProvider>().isAmharicAudio),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              SmoothPageRoute(page: const PracticeScreen()),
+                            );
+                          },
+                        ),
+                      ),
+                      const SizedBox(width: AppSizes.paddingMD),
+                      Expanded(
+                        child: _FeatureCard(
+                          icon: '📿',
+                          title: AppStrings.tasbihFeature(context.watch<LanguageProvider>().isAmharicAudio),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              SmoothPageRoute(page: const TasbihScreen()),
+                            );
+                          },
+                        ),
+                      ),
+                      const SizedBox(width: AppSizes.paddingMD),
+                      Expanded(
+                        child: _FeatureCard(
+                          icon: '🧩',
+                          title: AppStrings.puzzleFeature(context.watch<LanguageProvider>().isAmharicAudio),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              SmoothPageRoute(page: const PuzzleLevelsScreen()),
+                            );
+                          },
                         ),
                       ),
                     ],
                   ),
-                ),
-              ],
+                  const SizedBox(height: AppSizes.padding2XL),
+
+                  // Islamic Quote
+                  Container(
+                    padding: const EdgeInsets.all(AppSizes.paddingLG),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      borderRadius: BorderRadius.circular(AppSizes.radiusLG),
+                      border: Border.all(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.borderDark
+                            : AppColors.borderLight,
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          AppStrings.hadithQuote(context.watch<LanguageProvider>().isAmharicAudio),
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            fontStyle: FontStyle.italic,
+                            height: 1.7,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: AppSizes.paddingSM),
+                        Text(
+                          AppStrings.hadithSource(context.watch<LanguageProvider>().isAmharicAudio),
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

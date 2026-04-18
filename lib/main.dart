@@ -12,31 +12,41 @@ import 'services/notification_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize notifications
-  final notificationService = NotificationService();
-  await notificationService.initialize();
-  await notificationService.requestPermissions();
-  await notificationService.scheduleRandomDailyReminders();
-
-  // Pre-cache for faster startup - don't block on it
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
-
-  // Hide the navigation bar - auto-hides when tapping the app body after swipe-up
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  // Set orientation and UI mode immediately (non-blocking, fast)
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      systemNavigationBarColor: Colors.black12,
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.transparent,
       systemNavigationBarDividerColor: Colors.transparent,
-      systemNavigationBarIconBrightness: Brightness.dark,
+      systemNavigationBarIconBrightness: Brightness.light,
       systemNavigationBarContrastEnforced: false,
       systemStatusBarContrastEnforced: false,
     ),
   );
 
+  // Launch the app IMMEDIATELY - don't block on notifications
   runApp(const MyApp());
+
+  // Initialize notifications in the background AFTER app is visible
+  _initNotificationsInBackground();
+}
+
+/// Non-blocking notification setup - runs after the first frame is painted
+void _initNotificationsInBackground() {
+  WidgetsBinding.instance.addPostFrameCallback((_) async {
+    try {
+      final notificationService = NotificationService();
+      await notificationService.initialize();
+      await notificationService.requestPermissions();
+      await notificationService.scheduleRandomDailyReminders();
+    } catch (e) {
+      debugPrint('Notification init error (non-critical): $e');
+    }
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -47,7 +57,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider(), lazy: false),
-        ChangeNotifierProvider(create: (_) => NamesProvider()),
+        ChangeNotifierProvider(create: (_) => NamesProvider(), lazy: false),
         ChangeNotifierProvider(create: (_) => LanguageProvider()),
         ChangeNotifierProxyProvider<LanguageProvider, AudioProvider>(
           create: (_) => AudioProvider(),

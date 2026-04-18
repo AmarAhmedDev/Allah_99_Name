@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vibration/vibration.dart';
+import 'package:provider/provider.dart';
 import '../constants/app_constants.dart';
+import '../constants/app_strings.dart';
+import '../providers/language_provider.dart';
 
 class TasbihScreen extends StatefulWidget {
   const TasbihScreen({super.key});
@@ -74,12 +77,12 @@ class _TasbihScreenState extends State<TasbihScreen>
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Digital Tasbih'),
+        title: Text(AppStrings.digitalTasbih(context.watch<LanguageProvider>().isAmharicAudio)),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: _resetCount,
-            tooltip: 'Reset Counter',
+            tooltip: AppStrings.reset(context.watch<LanguageProvider>().isAmharicAudio),
           ),
         ],
       ),
@@ -173,7 +176,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                         ),
                         if (_target != 0)
                           Text(
-                            'Target: $_target',
+                            '${AppStrings.target(context.watch<LanguageProvider>().isAmharicAudio)}$_target',
                             style: Theme.of(context).textTheme.bodyMedium
                                 ?.copyWith(color: Colors.grey),
                           ),
@@ -190,7 +193,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Text(
-                                'Cycle: $_cycle',
+                                '${AppStrings.cycle(context.watch<LanguageProvider>().isAmharicAudio)}$_cycle',
                                 style: const TextStyle(
                                   color: AppColors.gold,
                                   fontWeight: FontWeight.bold,
@@ -212,7 +215,7 @@ class _TasbihScreenState extends State<TasbihScreen>
           Padding(
             padding: const EdgeInsets.only(bottom: AppSizes.padding2XL),
             child: Text(
-              'Tap anywhere on the circle to count',
+              AppStrings.tapToCount(context.watch<LanguageProvider>().isAmharicAudio),
               style: Theme.of(
                 context,
               ).textTheme.bodyMedium?.copyWith(color: Colors.grey),

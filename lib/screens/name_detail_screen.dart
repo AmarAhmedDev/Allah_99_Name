@@ -6,6 +6,7 @@ import '../models/allah_name.dart';
 import '../providers/names_provider.dart';
 import '../providers/audio_provider.dart';
 import '../providers/language_provider.dart';
+import '../constants/app_strings.dart';
 
 class NameDetailScreen extends StatefulWidget {
   final AllahName name;
@@ -175,8 +176,11 @@ class _NameDetailScreenState extends State<NameDetailScreen> {
                   ),
                 ),
                 child: Text(
-                  widget.name.explanation,
+                  context.watch<LanguageProvider>().isAmharicAudio && widget.name.explanationAm.isNotEmpty
+                      ? widget.name.explanationAm
+                      : widget.name.explanation,
                   style: Theme.of(
+
                     context,
                   ).textTheme.bodyLarge?.copyWith(height: 1.8),
                 ),
@@ -204,7 +208,7 @@ class _NameDetailScreenState extends State<NameDetailScreen> {
                         }
                       },
                       icon: const Icon(Icons.arrow_back),
-                      label: const Text('Previous'),
+                      label: Text(AppStrings.previous(context.watch<LanguageProvider>().isAmharicAudio)),
                     ),
                   ),
                   const SizedBox(width: AppSizes.paddingMD),
@@ -225,7 +229,7 @@ class _NameDetailScreenState extends State<NameDetailScreen> {
                         }
                       },
                       icon: const Icon(Icons.arrow_forward),
-                      label: const Text('Next'),
+                      label: Text(AppStrings.next(context.watch<LanguageProvider>().isAmharicAudio)),
                       style: OutlinedButton.styleFrom(
                         textStyle: const TextStyle(fontSize: 16),
                       ),

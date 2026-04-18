@@ -13,16 +13,18 @@ class LanguageProvider with ChangeNotifier {
 
   Future<void> _loadLanguagePreference() async {
     final prefs = await SharedPreferences.getInstance();
-    _isAmharicAudio = prefs.getBool(_amharicAudioPrefKey) ?? true; // Amharic might be the default based on user intent, but let's default to false (English) to be safe or true, let's use true for Amharic or false for English. Let's make Amharic default.
+    _isAmharicAudio = prefs.getBool(_amharicAudioPrefKey) ?? true;
     notifyListeners();
   }
 
   Future<void> toggleLanguage(bool isAmharic) async {
-    if (_isAmharicAudio != isAmharic) {
-      _isAmharicAudio = isAmharic;
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setBool(_amharicAudioPrefKey, _isAmharicAudio);
-      notifyListeners();
-    }
+    if (_isAmharicAudio == isAmharic) return; // Skip if no change
+    _isAmharicAudio = isAmharic;
+    notifyListeners(); // Update UI immediately
+
+    // Save in background
+    SharedPreferences.getInstance().then((prefs) {
+      prefs.setBool(_amharicAudioPrefKey, _isAmharicAudio);
+    });
   }
 }

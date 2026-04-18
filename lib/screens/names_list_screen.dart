@@ -6,6 +6,7 @@ import '../providers/names_provider.dart';
 import '../providers/audio_provider.dart';
 import '../providers/language_provider.dart';
 import '../models/allah_name.dart';
+import '../constants/app_strings.dart';
 import 'name_detail_screen.dart';
 import 'audio_player_screen.dart';
 
@@ -64,12 +65,39 @@ class _NamesListScreenState extends State<NamesListScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('99 Names of Allah'),
+        title: Text(AppStrings.appTitle(context.watch<LanguageProvider>().isAmharicAudio)),
         actions: [
           PopupMenuButton<bool>(
-            icon: const Icon(Icons.language),
-            tooltip: 'Select Audio Language',
+            tooltip: AppStrings.selectLanguage(context.watch<LanguageProvider>().isAmharicAudio),
             initialValue: context.watch<LanguageProvider>().isAmharicAudio,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: AppColors.gold.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: AppColors.gold.withValues(alpha: 0.5)),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.language, size: 16, color: AppColors.gold),
+                    const SizedBox(width: 6),
+                    Text(
+                      'Lang/ቋንቋ',
+                      style: GoogleFonts.poppins(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.gold,
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    const Icon(Icons.arrow_drop_down, size: 18, color: AppColors.gold),
+                  ],
+                ),
+              ),
+            ),
             onSelected: (bool isAmharic) {
               context.read<LanguageProvider>().toggleLanguage(isAmharic);
             },
@@ -133,7 +161,7 @@ class _NamesListScreenState extends State<NamesListScreen> {
                       controller: _searchController,
                       style: GoogleFonts.poppins(fontSize: 15),
                       decoration: InputDecoration(
-                        hintText: 'Search Arabic, translation, meaning...',
+                        hintText: AppStrings.searchPlaceholder(context.watch<LanguageProvider>().isAmharicAudio),
                         hintStyle: GoogleFonts.poppins(
                           color: Theme.of(context).hintColor,
                           fontSize: 14,
@@ -187,7 +215,7 @@ class _NamesListScreenState extends State<NamesListScreen> {
           );
         },
         icon: const Icon(Icons.play_arrow),
-        label: const Text('Play All'),
+        label: Text(AppStrings.playAll(context.watch<LanguageProvider>().isAmharicAudio)),
       ),
     );
   }
@@ -207,7 +235,7 @@ class _NamesListScreenState extends State<NamesListScreen> {
           const Text('🔍', style: TextStyle(fontSize: 64)),
           const SizedBox(height: AppSizes.paddingLG),
           Text(
-            'No names found',
+            AppStrings.noNamesFound(context.watch<LanguageProvider>().isAmharicAudio),
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: Theme.of(context).brightness == Brightness.dark
                   ? AppColors.textTertiaryDark

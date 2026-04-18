@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import '../constants/app_constants.dart';
 import '../models/allah_name.dart';
 import '../providers/names_provider.dart';
+import '../providers/language_provider.dart';
+import '../constants/app_strings.dart';
 
 class PracticeScreen extends StatefulWidget {
   const PracticeScreen({super.key});
@@ -311,7 +313,9 @@ class _PracticeScreenState extends State<PracticeScreen>
           ),
         ],
       ),
-      body: Column(
+      body: SafeArea(
+        bottom: true,
+        child: Column(
         children: [
           // Progress indicator
           _buildProgressBar(),
@@ -345,6 +349,7 @@ class _PracticeScreenState extends State<PracticeScreen>
             ),
           ),
         ],
+      ),
       ),
     );
   }
@@ -380,10 +385,13 @@ class _PracticeScreenState extends State<PracticeScreen>
   }
 
   Widget _buildQuestionContent(Question currentQuestion) {
-    return Padding(
-      padding: const EdgeInsets.all(AppSizes.paddingLG),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 800),
+        child: Padding(
+          padding: const EdgeInsets.all(AppSizes.paddingLG),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Question Card
           Container(
@@ -412,7 +420,7 @@ class _PracticeScreenState extends State<PracticeScreen>
             child: Column(
               children: [
                 Text(
-                  'What is the name for:',
+                  AppStrings.whatIsNameFor(context.watch<LanguageProvider>().isAmharicAudio),
                   style: TextStyle(
                     fontSize: 14,
                     color: Theme.of(context).brightness == Brightness.dark
@@ -483,7 +491,10 @@ class _PracticeScreenState extends State<PracticeScreen>
             child: _isAnswered
                 ? Padding(
                     key: const ValueKey('next_button'),
-                    padding: const EdgeInsets.only(top: AppSizes.paddingMD),
+                    padding: const EdgeInsets.only(
+                      top: AppSizes.paddingMD, 
+                      bottom: AppSizes.padding2XL, // Pushed up to avoid navigation bar
+                    ),
                     child: SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -504,8 +515,8 @@ class _PracticeScreenState extends State<PracticeScreen>
                           children: [
                             Text(
                               _currentIndex < _questions.length - 1
-                                  ? 'Next Question'
-                                  : 'See Results ✨',
+                                  ? AppStrings.nextQuestion(context.watch<LanguageProvider>().isAmharicAudio)
+                                  : AppStrings.seeResults(context.watch<LanguageProvider>().isAmharicAudio),
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
@@ -523,6 +534,8 @@ class _PracticeScreenState extends State<PracticeScreen>
                 : const SizedBox.shrink(key: ValueKey('empty')),
           ),
         ],
+      ),
+        ),
       ),
     );
   }
@@ -734,19 +747,19 @@ class _PracticeScreenState extends State<PracticeScreen>
                               children: [
                                 _buildStatCard(
                                   '✅',
-                                  'Correct',
+                                  AppStrings.correctStats(context.watch<LanguageProvider>().isAmharicAudio),
                                   '$_score',
                                   const Color(0xFF00B894),
                                 ),
                                 _buildStatCard(
                                   '❌',
-                                  'Wrong',
+                                  AppStrings.wrongStats(context.watch<LanguageProvider>().isAmharicAudio),
                                   '${_questions.length - _score}',
                                   const Color(0xFFFF6B6B),
                                 ),
                                 _buildStatCard(
                                   '📝',
-                                  'Total',
+                                  AppStrings.totalStats(context.watch<LanguageProvider>().isAmharicAudio),
                                   '${_questions.length}',
                                   AppColors.gold,
                                 ),
@@ -760,7 +773,7 @@ class _PracticeScreenState extends State<PracticeScreen>
                               child: ElevatedButton.icon(
                                 onPressed: _restartQuiz,
                                 icon: const Icon(Icons.refresh_rounded),
-                                label: const Text('Try Again'),
+                                label: Text(AppStrings.tryAgain(context.watch<LanguageProvider>().isAmharicAudio)),
                                 style: ElevatedButton.styleFrom(
                                   padding: const EdgeInsets.symmetric(
                                     vertical: 16,
@@ -783,7 +796,7 @@ class _PracticeScreenState extends State<PracticeScreen>
                               child: OutlinedButton.icon(
                                 onPressed: () => Navigator.pop(context),
                                 icon: const Icon(Icons.home_rounded),
-                                label: const Text('Back to Home'),
+                                label: Text(AppStrings.returnHome(context.watch<LanguageProvider>().isAmharicAudio)),
                                 style: OutlinedButton.styleFrom(
                                   padding: const EdgeInsets.symmetric(
                                     vertical: 16,

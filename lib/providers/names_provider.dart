@@ -9,6 +9,9 @@ class NamesProvider with ChangeNotifier {
   bool _isLoading = true;
   String _searchQuery = '';
 
+  // Cache for getIndexById lookups
+  Map<int, int> _indexCache = {};
+
   List<AllahName> get allNames => _allNames;
   List<AllahName> get filteredNames => _filteredNames;
   bool get isLoading => _isLoading;
@@ -21,7 +24,7 @@ class NamesProvider with ChangeNotifier {
   Future<void> loadNames() async {
     try {
       _isLoading = true;
-      notifyListeners();
+      // Don't notifyListeners here - avoid unnecessary rebuild during init
 
       // Load JSON file from assets
       final String jsonString = await rootBundle.loadString(
@@ -35,6 +38,12 @@ class NamesProvider with ChangeNotifier {
       // Sort by id to ensure proper order (0, 1, 2, 3, ...)
       _allNames.sort((a, b) => a.id.compareTo(b.id));
 
+      // Build index cache for O(1) lookups
+      _indexCache = {};
+      for (int i = 0; i < _allNames.length; i++) {
+        _indexCache[_allNames[i].id] = i;
+      }
+
       _filteredNames = List.from(_allNames);
 
       _isLoading = false;
@@ -47,10 +56,11 @@ class NamesProvider with ChangeNotifier {
   }
 
   void searchNames(String query) {
-    _searchQuery = query.trim();
+    final trimmed = query.trim();
+    if (trimmed == _searchQuery) return; // Skip if query unchanged
+    _searchQuery = trimmed;
 
     if (_searchQuery.isEmpty) {
-      // Reset to full sorted list when search is cleared
       _filteredNames = List.from(_allNames);
     } else {
       final lowerQuery = _searchQuery.toLowerCase();
@@ -68,20 +78,21 @@ class NamesProvider with ChangeNotifier {
 
   /// Clear search and reset list to default order
   void clearSearch() {
+    if (_searchQuery.isEmpty) return; // Skip if already cleared
     _searchQuery = '';
     _filteredNames = List.from(_allNames);
     notifyListeners();
   }
 
   AllahName? getNameById(int id) {
-    try {
-      return _allNames.firstWhere((name) => name.id == id);
-    } catch (e) {
-      return null;
+    final index = _indexCache[id];
+    if (index != null && index < _allNames.length) {
+      return _allNames[index];
     }
+    return null;
   }
 
   int getIndexById(int id) {
-    return _allNames.indexWhere((name) => name.id == id);
+    return _indexCache[id] ?? -1; // O(1) lookup instead of O(n) search
   }
 }
