@@ -13,7 +13,7 @@ class LanguageProvider with ChangeNotifier {
 
   Future<void> _loadLanguagePreference() async {
     final prefs = await SharedPreferences.getInstance();
-    _isAmharicAudio = prefs.getBool(_amharicAudioPrefKey) ?? true;
+    _isAmharicAudio = prefs.getBool(_amharicAudioPrefKey) ?? false;
     notifyListeners();
   }
 
