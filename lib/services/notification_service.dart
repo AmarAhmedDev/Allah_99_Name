@@ -116,7 +116,7 @@ class NotificationService {
             color: Color(0xFFD4AF37), // Gold color
           ),
         ),
-        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       );
     }
   }
